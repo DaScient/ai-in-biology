@@ -70,32 +70,32 @@ const description = 'Test API endpoints interactively. Predict protein structure
             </div>
 
             <div class="tab-content active" data-tab="json">
-              <pre class="request-json"><code>{
+              <pre class="request-json"><code set:html={`{
   "sequence": "MEEPQSDPSVEPPLSQETFSDLWKLLPENNVLSPLPSQAMDDLMLSPDDIEQWFTEDPGPDEAPRMPEAAPPVAPAPAAPTPAAPAPAPSWPLSSSVPSQKTYQGSYGFRLGFLHSGTAKSVTCTYSPALNKMFCQLAKTCPVQLWVDSTPPPGTRVRAMAIYKQSQHMTEVVRRCPHHERCSDSDGLAPPQHLIRVEGNLRVEYLDDRNTFRHSVVVPYEPPEVGSDCTTIHYNYMCNSSCMGGMNRRPILTIITLEDSSGNLLGRNSFEVRVCACPGRDRRTEEENLRKKGEPHHELPPGSTKRALPNNTSSSPQPKKKPLDGEYFTLQIRGRERFEMFRELNEALELKDAQAGKEPGGSRAHSSHLKSKKGQSTSRHKKLMFKTEGPDSD",
   "model_type": "alphafold2",
   "return_plddt": true
-}</code></pre>
+}`} /></pre>
             </div>
 
             <div class="tab-content" data-tab="curl">
-              <pre class="request-curl"><code>curl -X POST "https://api.bioai.dascient.com/api/v1/protein/fold" \
-  -H "X-API-Key: YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
+              <pre class="request-curl"><code set:html={`curl -X POST "https://api.bioai.dascient.com/api/v1/protein/fold" \\
+  -H "X-API-Key: YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
   -d '{
     "sequence": "MEEPQSDPSVEPPLSQETFSDLWKLLPENN",
     "model_type": "alphafold2"
-  }'</code></pre>
+  }'`} /></pre>
             </div>
 
             <div class="tab-content" data-tab="python">
-              <pre class="request-python"><code>import requests
+              <pre class="request-python"><code set:html={`import requests
 
 response = requests.post(
     "https://api.bioai.dascient.com/api/v1/protein/fold",
     headers={"X-API-Key": "YOUR_API_KEY"},
     json={"sequence": "MEEPQSDPSVEPPLSQETFSDLWKLLPENN"}
 )
-pdb = response.json()["pdb_content"]</code></pre>
+pdb = response.json()["pdb_content"]`} /></pre>
             </div>
           </div>
 

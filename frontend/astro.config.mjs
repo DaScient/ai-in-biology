@@ -4,12 +4,12 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import compress from 'astro-compress';
-import { remarkAlert } from 'remark-github-alerts';
+import remarkAlert from 'remark-github-alerts';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dascient.github.io/ai-in-biological-sciences',
-  base: '/ai-in-biological-sciences',
+  site: 'https://dascient.github.io/ai-in-biology',
+  base: '/ai-in-biology',
 
   integrations: [
     preact({ compat: true }),
