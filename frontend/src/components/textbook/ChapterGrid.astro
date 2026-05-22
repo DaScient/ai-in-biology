@@ -1,0 +1,58 @@
+---
+// Stub ChapterGrid - will be populated from src/content/textbook at build time.
+const chapters = [
+  { num: '01', title: 'Biology as Information Science', slug: '01-biology-information-science' },
+  { num: '02', title: 'AI Paradigms', slug: '02-ai-paradigms' },
+  { num: '03', title: 'Genomics & Sequence Models', slug: '03-genomics' },
+  { num: '04', title: 'Protein Structure Prediction', slug: '04-protein-structure' },
+  { num: '05', title: 'Single-Cell Analysis', slug: '05-single-cell' },
+  { num: '06', title: 'Drug Discovery', slug: '06-drug-discovery' },
+];
+---
+
+<div class="chapter-grid">
+  {chapters.map((c) => (
+    <a class="chapter-card" href={`/textbook/${c.slug}`}>
+      <span class="chapter-num">Chapter {c.num}</span>
+      <h3 class="chapter-title">{c.title}</h3>
+    </a>
+  ))}
+</div>
+
+<style>
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+
+  .chapter-card {
+    display: block;
+    padding: 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .chapter-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .chapter-num {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+  }
+
+  .chapter-title {
+    margin-top: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+  }
+</style>
