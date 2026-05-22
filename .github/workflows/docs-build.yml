@@ -32,7 +32,7 @@ jobs:
 
       - name: Install documentation dependencies
         run: |
-          pip install -e ".[docs]"
+          pip install -r docs/requirements.txt
 
       - name: Build docs
         run: mkdocs build --strict
