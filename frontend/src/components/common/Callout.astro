@@ -1,0 +1,38 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'quote' | 'note';
+  attribution?: string;
+}
+
+const { type = 'info', attribution } = Astro.props;
+---
+
+<aside class={`callout callout-${type}`}>
+  <div class="callout-content">
+    <slot />
+  </div>
+  {attribution && <footer class="callout-attribution">— {attribution}</footer>}
+</aside>
+
+<style>
+  .callout {
+    background: var(--bg-secondary);
+    border-left: 4px solid var(--accent);
+    padding: 1.25rem 1.5rem;
+    margin: 2rem auto;
+    border-radius: 0.5rem;
+    max-width: 70ch;
+  }
+
+  .callout-quote {
+    font-style: italic;
+    font-size: 1.125rem;
+  }
+
+  .callout-attribution {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-align: right;
+  }
+</style>

@@ -1,0 +1,221 @@
+---
+import BaseLayout from '../layouts/Default.astro';
+import Hero from '../components/common/Hero.astro';
+import ChapterGrid from '../components/textbook/ChapterGrid.astro';
+import Callout from '../components/common/Callout.astro';
+
+// Metadata for SEO
+const title = 'AI in Biological Sciences';
+const description = 'Comprehensive textbook on the convergence of artificial intelligence and biological sciences. Interactive notebooks, API playground, and community-driven learning.';
+---
+
+<BaseLayout title={title} description={description}>
+  <main>
+    <!-- Hero Section -->
+    <Hero
+      title="AI in Biological Sciences"
+      subtitle="Theory, Applications, Practice, and Society"
+      ctaText="Start Reading"
+      ctaLink="/textbook/"
+      secondaryCtaText="Try API"
+      secondaryCtaLink="/api/playground"
+    >
+      <div class="mt-8 flex gap-4 justify-center">
+        <a href="/textbook/" class="btn btn-primary">📖 Read Online</a>
+        <a href="https://github.com/DaScient/ai-in-biological-sciences" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+          <span class="i-github"></span> GitHub
+        </a>
+        <a href="/api/playground" class="btn btn-outline">🔬 API Playground</a>
+      </div>
+    </Hero>
+
+    <!-- Stats Banner -->
+    <div class="stats-banner">
+      <div class="stat">
+        <span class="stat-value">24</span>
+        <span class="stat-label">Chapters</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">14+</span>
+        <span class="stat-label">API Endpoints</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">300+</span>
+        <span class="stat-label">Interactive Examples</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">45+</span>
+        <span class="stat-label">Contributors</span>
+      </div>
+    </div>
+
+    <!-- Featured Quote -->
+    <Callout type="quote" attribution="Dr. Aris Thorne, Series Editor">
+      "Biology is fundamentally an information science. AI provides the
+      computational syntax to decode life's language. This textbook is
+      not a snapshot—it's a living framework."
+    </Callout>
+
+    <!-- Chapter Grid -->
+    <section class="chapters-section">
+      <h2 class="section-title">📚 Explore the Textbook</h2>
+      <ChapterGrid />
+    </section>
+
+    <!-- Interactive Preview -->
+    <section class="interactive-preview">
+      <h2 class="section-title">⚡ Try It Now</h2>
+      <div class="preview-grid">
+        <div class="preview-card">
+          <h3>🔬 Predict Protein Structure</h3>
+          <p>Enter a protein sequence and see AlphaFold2 prediction</p>
+          <div class="preview-demo">
+            <div id="protein-demo-root"></div>
+          </div>
+        </div>
+        <div class="preview-card">
+          <h3>🧬 Analyze Single-Cell Data</h3>
+          <p>Upload 10x data or use sample dataset</p>
+          <div class="preview-demo">
+            <div id="scell-demo-root"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+      <h2 class="section-title">🌍 Join the Community</h2>
+      <div class="community-links">
+        <a href="https://github.com/DaScient/ai-in-biological-sciences/discussions" class="community-card">
+          <span class="icon">💬</span>
+          <h3>Discussions</h3>
+          <p>Ask questions, share insights</p>
+        </a>
+        <a href="https://discord.gg/dascient" class="community-card">
+          <span class="icon">🎮</span>
+          <h3>Discord</h3>
+          <p>Live chat with community</p>
+        </a>
+        <a href="/community/contribute" class="community-card">
+          <span class="icon">🤝</span>
+          <h3>Contribute</h3>
+          <p>Fix typos, add examples</p>
+        </a>
+        <a href="https://twitter.com/DaScientAI" class="community-card">
+          <span class="icon">🐦</span>
+          <h3>X (Twitter)</h3>
+          <p>Follow for updates</p>
+        </a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  .stats-banner {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    padding: 3rem 1rem;
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+    border-radius: 1rem;
+    margin: 2rem 0;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 2rem 0 1.5rem;
+    text-align: center;
+  }
+
+  .preview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+  }
+
+  .preview-card {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+  }
+
+  .community-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .community-card {
+    background: var(--card-bg);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 200px;
+  }
+
+  .community-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .community-card .icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .community-card h3 {
+    font-size: 1.125rem;
+    margin: 0.5rem 0;
+    color: var(--text-primary);
+  }
+
+  .community-card p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 768px) {
+    .stats-banner {
+      gap: 2rem;
+    }
+
+    .stat-value {
+      font-size: 1.75rem;
+    }
+
+    .community-links {
+      gap: 1rem;
+    }
+
+    .community-card {
+      width: calc(50% - 0.5rem);
+    }
+  }
+</style>
