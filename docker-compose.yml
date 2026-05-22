@@ -5,54 +5,119 @@ services:
     build:
       context: .
       dockerfile: api/Dockerfile
+    container_name: ai-bio-api
     ports:
       - "8000:8000"
     environment:
       - APP_ENV=development
-      - DATABASE_URL=postgresql://aibio:aibio@db:5432/aibio
       - REDIS_URL=redis://redis:6379/0
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-aibio}:${POSTGRES_PASSWORD:-aibio}@postgres:5432/${POSTGRES_DB:-aibio}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-aibio}:${POSTGRES_PASSWORD:-aibio}@postgres:5432/${POSTGRES_DB:-aibio}
+      - MODEL_CACHE_DIR=/app/data/models
     env_file:
       - .env
-    depends_on:
-      - db
-      - redis
     volumes:
+      - model_cache:/app/data/models
       - ./data:/data
-      - ./api:/app/api
+      - ./api/notebooks:/app/notebooks
+    depends_on:
+      - redis
+      - postgres
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  redis:
+    image: redis:7-alpine
+    container_name: ai-bio-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:15-alpine
+    container_name: ai-bio-postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-aibio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aibio}
+      POSTGRES_DB: ${POSTGRES_DB:-aibio}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
 
   jupyter:
     build:
       context: .
-      dockerfile: api/Dockerfile
-    command: >
-      jupyter notebook
-        --ip=0.0.0.0
-        --port=8888
-        --no-browser
-        --NotebookApp.token=${JUPYTER_TOKEN:-}
+      dockerfile: api/Dockerfile.jupyter
+    container_name: ai-bio-jupyter
     ports:
       - "8888:8888"
     environment:
-      - APP_ENV=development
+      - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-}
+      - API_URL=http://api:8000
     volumes:
-      - ./api/notebooks:/app/api/notebooks
-      - ./data:/data
+      - ./api/notebooks:/home/jovyan/notebooks
+      - ./data:/home/jovyan/data
+    depends_on:
+      - api
+    restart: unless-stopped
 
-  db:
-    image: postgres:15-alpine
+  nginx:
+    image: nginx:alpine
+    container_name: ai-bio-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus
+    container_name: ai-bio-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--storage.tsdb.path=/prometheus"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: ai-bio-grafana
+    ports:
+      - "3000:3000"
     environment:
-      POSTGRES_USER: aibio
-      POSTGRES_PASSWORD: aibio
-      POSTGRES_DB: aibio
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
-
-  redis:
-    image: redis:7-alpine
-    ports:
-      - "6379:6379"
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+    depends_on:
+      - prometheus
+    restart: unless-stopped
 
 volumes:
+  model_cache:
+  redis_data:
   postgres_data:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  default:
+    name: ai-bio-network
