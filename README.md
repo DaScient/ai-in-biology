@@ -139,7 +139,7 @@ We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for gui
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
-**Commercial licensing** available at [dascient.com/licensing](https://dascient.com/licensing)
+**Commercial licensing** available. Contact commercial@dascient.com
 
 ## Acknowledgments
 
@@ -147,14 +147,14 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 - **OpenAI** for GPT API access
 - **Meta** for ESM models
 - **DeepMind** for AlphaFold2 open release
-- **Contributors**: 300+ researchers from 45 countries
+- **Contributors**: 20+ researchers, leaders, and educators worldwide
 
 ## Contact
 
 - **Technical Support**: support@dascient.com
 - **API Access**: api@dascient.com
 - **Textbook Inquiries**: press@dascient.com
-- **Discord**: [join.dascient.com](https://join.dascient.com)
+- **LinkedIn**: [DaScient](https://linkedin.com/company/dascient/)
 
 ---
 
