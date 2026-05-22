@@ -6,6 +6,8 @@ site_url: https://dascient.github.io/ai-in-biological-sciences
 repo_name: DaScient/ai-in-biology
 repo_url: https://github.com/DaScient/ai-in-biology
 
+docs_dir: docs/source
+
 theme:
   name: material
   palette:

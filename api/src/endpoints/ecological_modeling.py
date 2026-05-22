@@ -43,7 +43,7 @@ async def model_species_distribution(request: SDMRequest) -> SDMResponse:
     return SDMResponse(
         suitability_map=[[0.5]],
         auc_roc=0.87,
-        variable_importance={layer: 0.1 for layer in request.environmental_layers},
+        variable_importance=dict.fromkeys(request.environmental_layers, 0.1),
     )
 
 
