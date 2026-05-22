@@ -35,6 +35,8 @@ jobs:
           pip install -r docs/requirements.txt
 
       - name: Build docs
+        # TODO: re-enable `--strict` once all nav-referenced chapter / API / tutorial
+        # stubs in mkdocs.yml have been written (currently many are placeholders).
         run: mkdocs build
 
       - name: Deploy to GitHub Pages
