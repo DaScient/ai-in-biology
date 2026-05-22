@@ -11,8 +11,8 @@ services:
     environment:
       - APP_ENV=development
       - REDIS_URL=redis://redis:6379/0
-      - POSTGRES_URL=postgresql://aibio:aibio@postgres:5432/aibio
-      - DATABASE_URL=postgresql://aibio:aibio@postgres:5432/aibio
+      - POSTGRES_URL=postgresql://${POSTGRES_USER:-aibio}:${POSTGRES_PASSWORD:-aibio}@postgres:5432/${POSTGRES_DB:-aibio}
+      - DATABASE_URL=postgresql://${POSTGRES_USER:-aibio}:${POSTGRES_PASSWORD:-aibio}@postgres:5432/${POSTGRES_DB:-aibio}
       - MODEL_CACHE_DIR=/app/data/models
     env_file:
       - .env
@@ -44,9 +44,9 @@ services:
     image: postgres:15-alpine
     container_name: ai-bio-postgres
     environment:
-      POSTGRES_USER: aibio
-      POSTGRES_PASSWORD: aibio
-      POSTGRES_DB: aibio
+      POSTGRES_USER: ${POSTGRES_USER:-aibio}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-aibio}
+      POSTGRES_DB: ${POSTGRES_DB:-aibio}
     ports:
       - "5432:5432"
     volumes:
@@ -62,6 +62,7 @@ services:
       - "8888:8888"
     environment:
       - JUPYTER_ENABLE_LAB=yes
+      - JUPYTER_TOKEN=${JUPYTER_TOKEN:-}
       - API_URL=http://api:8000
     volumes:
       - ./api/notebooks:/home/jovyan/notebooks
@@ -102,7 +103,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD:-admin}
     volumes:
       - grafana_data:/var/lib/grafana
       - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
