@@ -47,7 +47,12 @@ class GenerateMoleculeRequest(BaseModel):
         default_factory=dict,
         description="Desired molecular properties (e.g. MW, logP)",
     )
-    n_molecules: int = Field(default=10, ge=1, le=100, description="Number of molecules to generate")
+    n_molecules: int = Field(
+        default=10,
+        ge=1,
+        le=100,
+        description="Number of molecules to generate",
+    )
 
 
 class GenerateMoleculeResponse(BaseModel):
