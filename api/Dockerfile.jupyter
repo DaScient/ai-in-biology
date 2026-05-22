@@ -1,0 +1,45 @@
+# syntax=docker/dockerfile:1.6
+# Jupyter Lab image for interactive notebooks accompanying the textbook.
+
+FROM python:3.11-slim
+
+ENV JUPYTER_ENABLE_LAB=yes \
+    PIP_NO_CACHE_DIR=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1
+
+WORKDIR /app
+
+# System dependencies useful for scientific Python wheels and notebook tooling
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        curl \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install project dependencies (which include jupyter/ipywidgets)
+COPY pyproject.toml ./
+COPY api/ ./api/
+COPY data/ ./data/
+
+RUN pip install --upgrade pip \
+    && pip install . \
+    && pip install jupyterlab
+
+# Create the `jovyan` user used by the compose volume mounts
+RUN useradd -m -u 1000 jovyan \
+    && mkdir -p /home/jovyan/notebooks /home/jovyan/data \
+    && chown -R jovyan:jovyan /home/jovyan /app
+
+USER jovyan
+WORKDIR /home/jovyan
+
+EXPOSE 8888
+
+CMD ["jupyter", "lab", \
+     "--ip=0.0.0.0", \
+     "--port=8888", \
+     "--no-browser", \
+     "--ServerApp.token=", \
+     "--ServerApp.password=", \
+     "--ServerApp.root_dir=/home/jovyan"]
