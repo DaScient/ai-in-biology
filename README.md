@@ -8,7 +8,7 @@
 
 > *"Biology is fundamentally an information science. AI provides the computational syntax to decode life's language."* — Dr. Aris Thorne
 
-## 📚 About This Repository
+## About This Repository
 
 This repository is the living digital companion to the textbook **"AI in Biological Sciences: Theory, Applications, Practice, and Society"** (DaScient Press, 2025). It contains:
 
@@ -19,7 +19,7 @@ This repository is the living digital companion to the textbook **"AI in Biologi
 - **Docker containers** for reproducible execution
 - **Cloud deployment** templates (AWS, GCP, Azure)
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -47,7 +47,7 @@ docker-compose up -d
 # Jupyter at http://localhost:8888
 ```
 
-## 📖 Textbook Chapters
+## Textbook Chapters
 
 | Part | Chapter | Notebook |
 |------|---------|----------|
@@ -76,7 +76,7 @@ docker-compose up -d
 | VIII | 23. Limits & Open Questions | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](api/notebooks/chapter_23_limits.ipynb) |
 | VIII | 24. A New Biology | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](api/notebooks/chapter_24_new_biology.ipynb) |
 
-## 🔬 API Endpoints
+## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
@@ -95,7 +95,7 @@ docker-compose up -d
 | `/api/v1/literature/hypothesis` | POST | Hypothesis generation |
 | `/api/v1/ethics/audit` | POST | Model bias auditing |
 
-## 🧠 Pre-trained Models Available
+## Pre-trained Models Available
 
 | Model | Description | Size | Download |
 |-------|-------------|------|----------|
@@ -105,7 +105,7 @@ docker-compose up -d
 | EcoGNN | Ecological network model | 85M | [Link](https://huggingface.co/dascient/ecognn) |
 | Clinformer | Clinical prediction transformer | 250M | [Link](https://huggingface.co/dascient/clinformer) |
 
-## 📊 Benchmark Datasets
+## Benchmark Datasets
 
 - **Protein Folding**: CASP15, CAMEO, PDB
 - **Variant Calling**: GIAB v4.2, Platinum Genomes
@@ -113,7 +113,7 @@ docker-compose up -d
 - **Ecology**: GBIF, iNaturalist 2023
 - **Clinical**: MIMIC-IV, UK Biobank (subset)
 
-## 🤝 Contributing
+## Contributing
 
 We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for guidelines.
 
@@ -122,7 +122,7 @@ We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for gui
 - **Submit code**: Fork → branch → PR
 - **Improve docs**: Edit `/docs/source/`
 
-## 📝 Citation
+## Citation
 
 ```bibtex
 @book{thorne2025aibio,
@@ -135,13 +135,13 @@ We welcome contributions! See [CONTRIBUTING.md](.github/CONTRIBUTING.md) for gui
 }
 ```
 
-## 📄 License
+## License
 
 This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License.
 
 **Commercial licensing** available at [dascient.com/licensing](https://dascient.com/licensing)
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - **DaScient Intelligence Academy** for textbook development
 - **OpenAI** for GPT API access
@@ -149,7 +149,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 - **DeepMind** for AlphaFold2 open release
 - **Contributors**: 300+ researchers from 45 countries
 
-## 📧 Contact
+## Contact
 
 - **Technical Support**: support@dascient.com
 - **API Access**: api@dascient.com
