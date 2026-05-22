@@ -1,0 +1,116 @@
+site_name: AI in Biological Sciences
+site_description: Comprehensive textbook companion for AI in Biological Sciences
+site_author: DaScient Intelligence Academy
+site_url: https://dascient.github.io/ai-in-biological-sciences
+
+repo_name: DaScient/ai-in-biology
+repo_url: https://github.com/DaScient/ai-in-biology
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.annotate
+    - content.code.copy
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [api/src]
+  - mkdocs-jupyter:
+      execute: false
+      include_source: true
+  - glightbox
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Chapters:
+    - "Part I: Foundations":
+      - chapters/chapter_01_bioinfo_basics.md
+      - chapters/chapter_02_dna_language_models.md
+      - chapters/chapter_03_attention_in_genomics.md
+    - "Part II: Data":
+      - chapters/chapter_04_data_scales.md
+    - "Part III: Methods":
+      - chapters/chapter_05_embeddings.md
+      - chapters/chapter_06_modeling.md
+      - chapters/chapter_07_genomics.md
+      - chapters/chapter_08_protein.md
+      - chapters/chapter_09_single_cell.md
+    - "Part IV: Systems":
+      - chapters/chapter_10_development.md
+      - chapters/chapter_11_neuroscience.md
+      - chapters/chapter_12_ethology.md
+    - "Part V: Earth & Evolution":
+      - chapters/chapter_13_evolution.md
+      - chapters/chapter_14_ecology.md
+      - chapters/chapter_15_earth.md
+    - "Part VI: Applications":
+      - chapters/chapter_16_medicine.md
+      - chapters/chapter_17_biotech.md
+      - chapters/chapter_18_experiments.md
+    - "Part VII: Society":
+      - chapters/chapter_19_ethics.md
+      - chapters/chapter_20_policy.md
+      - chapters/chapter_21_society.md
+    - "Part VIII: Frontiers":
+      - chapters/chapter_22_coevolution.md
+      - chapters/chapter_23_limits.md
+      - chapters/chapter_24_new_biology.md
+  - API Reference:
+    - api/overview.md
+    - api/protein.md
+    - api/genomics.md
+    - api/single_cell.md
+    - api/ecology.md
+    - api/clinical.md
+    - api/drug_discovery.md
+  - Tutorials:
+    - tutorials/quickstart.md
+    - tutorials/protein_folding.md
+    - tutorials/genomics_analysis.md
+  - Examples:
+    - examples/python.md
+    - examples/R.md
+    - examples/julia.md

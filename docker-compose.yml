@@ -1,0 +1,58 @@
+version: "3.9"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=development
+      - DATABASE_URL=postgresql://aibio:aibio@db:5432/aibio
+      - REDIS_URL=redis://redis:6379/0
+    env_file:
+      - .env
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./data:/data
+      - ./api:/app/api
+
+  jupyter:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    command: >
+      jupyter notebook
+        --ip=0.0.0.0
+        --port=8888
+        --no-browser
+        --NotebookApp.token=${JUPYTER_TOKEN:-}
+    ports:
+      - "8888:8888"
+    environment:
+      - APP_ENV=development
+    volumes:
+      - ./api/notebooks:/app/api/notebooks
+      - ./data:/data
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: aibio
+      POSTGRES_PASSWORD: aibio
+      POSTGRES_DB: aibio
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+volumes:
+  postgres_data:

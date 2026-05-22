@@ -1,0 +1,49 @@
+name: Sync Notebooks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "api/notebooks/**"
+  schedule:
+    - cron: "0 2 * * 0"  # Weekly on Sunday at 02:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install nbconvert
+        run: pip install nbconvert nbformat
+
+      - name: Validate notebooks
+        run: |
+          python -c "
+          import nbformat, glob, sys
+          errors = []
+          for path in glob.glob('api/notebooks/*.ipynb'):
+              try:
+                  nbformat.read(path, as_version=4)
+                  print(f'OK: {path}')
+              except Exception as e:
+                  errors.append(f'FAIL: {path} - {e}')
+          if errors:
+              for e in errors:
+                  print(e, file=sys.stderr)
+              sys.exit(1)
+          "
+
+      - name: Sync notebooks to docs
+        run: |
+          mkdir -p docs/source/notebooks
+          cp api/notebooks/*.ipynb docs/source/notebooks/ 2>/dev/null || true
