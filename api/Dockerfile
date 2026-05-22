@@ -11,11 +11,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copy dependency files
 COPY pyproject.toml .
 
-# Install Python dependencies (core + API)
-RUN pip install --no-cache-dir -e ".[dev]"
-
-# Copy application source
+# Copy application source before installing the package
 COPY api/ api/
+
+# Install Python dependencies needed at runtime
+RUN pip install --no-cache-dir .
 
 # Expose API port
 EXPOSE 8000
