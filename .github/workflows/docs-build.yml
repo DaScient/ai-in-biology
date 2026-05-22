@@ -35,9 +35,7 @@ jobs:
           pip install -r docs/requirements.txt
 
       - name: Build docs
-        # TODO: re-enable `--strict` once all nav-referenced chapter / API / tutorial
-        # stubs in mkdocs.yml have been written (currently many are placeholders).
-        run: mkdocs build
+        run: mkdocs build --strict
 
       - name: Deploy to GitHub Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
