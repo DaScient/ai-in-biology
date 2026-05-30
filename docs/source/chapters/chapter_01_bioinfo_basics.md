@@ -59,7 +59,7 @@ def shannon_entropy(seq: str) -> float:
     n = sum(counts.values())
     return -sum((c / n) * math.log2(c / n) for c in counts.values() if c)
 
-# E. coli K-12 origin of replication (oriC), 245 bp
+# E. coli K-12 origin of replication (oriC) region, 252 bp
 oric = (
     "GGATCCTGGGTATTAAAAAGAAGATCTATTTATTTAGAGATCTGTTCTATTGTGATCTCTTAT"
     "TAGGATCGCACTGCCCTGTGGATAACAAGGATCCGGCTTTTAAGATCAACAACCTGGAAAGGA"

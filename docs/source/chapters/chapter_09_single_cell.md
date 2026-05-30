@@ -75,7 +75,7 @@ Always sanity-check velocities at boundaries (terminal cell types should be sink
 
 ## 9.6  Common pitfalls
 
-- **Ambient RNA.** Use `SoulO`, `CellBender`, or `DecontX`. Otherwise you will discover "T-cell receptor" in macrophages.
+- **Ambient RNA.** Use `SoupX`, `CellBender`, or `DecontX`. Otherwise you will discover "T-cell receptor" in macrophages.
 - **Doublet contamination.** Run `Scrublet` or `DoubletFinder`; check that your "rare" cluster is not just doublets of two common types.
 - **Over-clustering.** Statistical significance of marker genes is not the same as biological reality. Tie clusters to spatial / functional evidence whenever possible.
 - **Annotation by LLM hallucination.** Foundation-model labels look plausible because they parrot training-set names. Always provide a reference atlas to ground the prediction.
