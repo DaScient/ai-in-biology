@@ -4,7 +4,7 @@
 
 ## Learning objectives
 
-- Use modern pose-estimation tools (DeepLabCut, SLEAP, AnyMAL) to extract markerless animal pose from video.
+- Use modern pose-estimation tools (DeepLabCut, SLEAP, Anipose) to extract markerless animal pose from video.
 - Cluster behavioral time series into "syllables" with unsupervised methods (MoSeq, B-SOiD, Keypoint-MoSeq).
 - Apply graph models to social network data (interactions over time) and detect emergent collective behavior.
 - Recognize ethical considerations specific to non-human animal observation.
