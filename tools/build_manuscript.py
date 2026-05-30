@@ -502,7 +502,7 @@ def render_chapter(doc: Document, blocks: list[Block]) -> None:
             _add_list(doc, block)
 
 
-def build(output: Path) -> Path:
+def build(output: Path) -> tuple[Path, int]:
     chapters = collect_chapters()
     if not chapters:
         raise SystemExit("No chapters found in mkdocs.yml nav.")
@@ -523,7 +523,7 @@ def build(output: Path) -> Path:
 
     output.parent.mkdir(parents=True, exist_ok=True)
     doc.save(output)
-    return output
+    return output, len(chapters)
 
 
 def main() -> None:
@@ -538,9 +538,8 @@ def main() -> None:
         help=f"Destination .docx path (default: {DEFAULT_OUTPUT.relative_to(REPO_ROOT)})",
     )
     args = parser.parse_args()
-    saved = build(args.output)
-    chapters = collect_chapters()
-    print(f"Compiled {len(chapters)} chapters into {saved}")
+    saved, count = build(args.output)
+    print(f"Compiled {count} chapters into {saved}")
 
 
 if __name__ == "__main__":
