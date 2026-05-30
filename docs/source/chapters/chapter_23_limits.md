@@ -49,7 +49,7 @@ def is_identifiable(jacobian: np.ndarray, tol: float = 1e-6) -> dict:
     fim = jacobian.T @ jacobian
     eig = np.linalg.eigvalsh(fim)
     eig = np.clip(eig, 0, None)
-    cond = eig.max() / max(eig.min(), 1e-30)
+    cond = eig.max() / max(eig.min(), 1e-30)   # 1e-30 floors the denominator to avoid divide-by-zero
     n_flat = int((eig < tol * eig.max()).sum())
     return {
         "condition_number": float(cond),

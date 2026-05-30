@@ -64,7 +64,7 @@ def closed_loop(fitness, propose, surrogate_fit, acquire,
     return X, y, best                        # best-so-far traces the loop's gain
 ```
 
-The `best`-so-far curve is the diagnostic: a healthy loop climbs and then plateaus as the landscape is exhausted; a *poisoned* loop climbs on its own optimistic errors and fails to replicate.
+The `best`-so-far curve is the diagnostic: a healthy loop climbs and then plateaus as the landscape is exhausted; a *miscalibrated* (overconfident) loop climbs on its own optimistic errors and fails to replicate.
 
 ## 22.5  New risks from the loop
 

@@ -60,7 +60,7 @@ manifest = StudyManifest(
     data_version="GTEx_v8",
     model_version="SpliceAI-1.3",
     seed=0,
-    code_commit="<git-sha>",
+    code_commit="a1b2c3d",          # replace with the actual `git rev-parse --short HEAD`
     environment=platform.platform(),
 )
 print(manifest.fingerprint())
