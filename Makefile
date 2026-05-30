@@ -1,4 +1,4 @@
-.PHONY: help install install-dev lint format test test-cov docs-build docs-serve api-run docker-build docker-up docker-down clean
+.PHONY: help install install-dev lint format test test-cov docs-build docs-serve manuscript api-run docker-build docker-up docker-down clean
 
 help:  ## Show this help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -29,6 +29,9 @@ docs-build:  ## Build documentation
 
 docs-serve:  ## Serve documentation locally
 	mkdocs serve
+
+manuscript:  ## Compile all chapters into a styled .docx textbook manuscript
+	python tools/build_manuscript.py
 
 api-run:  ## Run API development server
 	uvicorn api.src.main:app --reload --host 0.0.0.0 --port 8000
