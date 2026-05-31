@@ -1512,10 +1512,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#191a-concrete-risk-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1a Concrete risk scenarios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#192-privacy-and-consent" class="md-nav__link">
     <span class="md-ellipsis">
       
         19.2 Privacy and consent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192a-differential-privacy-for-genomic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2a Differential privacy for genomic data
       
     </span>
   </a>
@@ -1534,6 +1556,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#193a-a-worked-fairness-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3a A worked fairness trade-off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#194-worked-example-a-subgroup-bias-audit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1545,10 +1578,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#194a-bias-across-thresholds-equal-opportunity-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.4a Bias across thresholds — equal opportunity difference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#195-dual-use-and-responsible-disclosure" class="md-nav__link">
     <span class="md-ellipsis">
       
         19.5 Dual-use and responsible disclosure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#195a-a-model-refusal-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.5a A model refusal layer
       
     </span>
   </a>
@@ -2435,10 +2490,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#191a-concrete-risk-scenarios" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.1a Concrete risk scenarios
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#192-privacy-and-consent" class="md-nav__link">
     <span class="md-ellipsis">
       
         19.2 Privacy and consent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#192a-differential-privacy-for-genomic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.2a Differential privacy for genomic data
       
     </span>
   </a>
@@ -2457,6 +2534,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#193a-a-worked-fairness-trade-off" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.3a A worked fairness trade-off
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#194-worked-example-a-subgroup-bias-audit" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -2468,10 +2556,32 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#194a-bias-across-thresholds-equal-opportunity-difference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.4a Bias across thresholds — equal opportunity difference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#195-dual-use-and-responsible-disclosure" class="md-nav__link">
     <span class="md-ellipsis">
       
         19.5 Dual-use and responsible disclosure
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#195a-a-model-refusal-layer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        19.5a A model refusal layer
       
     </span>
   </a>
@@ -2594,12 +2704,113 @@
 </tbody>
 </table>
 <p>The unifying principle: <strong>the burden of proof scales with the irreversibility and reach of the decision the model informs.</strong></p>
+<h2 id="191a-concrete-risk-scenarios">19.1a  Concrete risk scenarios<a class="headerlink" href="#191a-concrete-risk-scenarios" title="Permanent link">¶</a></h2>
+<p>Anchoring each abstract risk class to a real-world example makes the duty of care tangible.</p>
+<table>
+<thead>
+<tr>
+<th>Risk class</th>
+<th>Example</th>
+<th>Consequence</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Irreversibility</strong></td>
+<td>Release of gene-drive mosquitoes in a field trial</td>
+<td>Edited allele spreads across population boundaries; cannot be recalled</td>
+<td>Phased testing (laboratory → confined field → limited release); molecular containment (split drives)</td>
+</tr>
+<tr>
+<td><strong>Heritability</strong></td>
+<td>Germline genome editing (CRISPR in human embryos)</td>
+<td>Offspring inherit edits; unknown long-term effects</td>
+<td>Moratorium on clinical germline editing; public deliberation</td>
+</tr>
+<tr>
+<td><strong>Dual-use</strong></td>
+<td>AI-designed toxin with high lethality and stability</td>
+<td>Lowered barrier for bioweapons development</td>
+<td>Sequence screening (Chapter 17); model refusal training; access control</td>
+</tr>
+<tr>
+<td><strong>Identity</strong></td>
+<td>Re-identification of anonymized genomes from consumer databases</td>
+<td>Disclosure of disease predisposition without consent</td>
+<td>Differential privacy; consent for secondary use; legal penalties</td>
+</tr>
+<tr>
+<td><strong>Ecological scale</strong></td>
+<td>AI-optimized pesticide deployment</td>
+<td>Local extinction of non-target insects; ecosystem disruption</td>
+<td>Environmental impact assessment; adaptive management with monitoring</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key insight:</strong> The same AI model that accelerates drug discovery can also accelerate harm. The ethical duty scales with the magnitude of potential harm, not just the intent of the user.</p>
+<p><strong>Pitfall:</strong> Generic "responsible AI" checklists often omit biology-specific risks. Always add a <strong>dual-use and ecological impact</strong> section to your model documentation.</p>
 <h2 id="192-privacy-and-consent">19.2  Privacy and consent<a class="headerlink" href="#192-privacy-and-consent" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Re-identification.</strong> Genomic data are quasi-identifiers; even "anonymized" SNP sets can be matched to named individuals via genealogy databases.</li>
 <li><strong>Consent decay.</strong> Broad consent collected for one study rarely covers training a foundation model years later. Document the chain of consent.</li>
 <li><strong>Federated and private learning.</strong> Differential privacy (DP-SGD), federated learning, and secure enclaves let models learn without centralizing raw records — at a measurable utility cost.</li>
 </ul>
+<h2 id="192a-differential-privacy-for-genomic-data">19.2a  Differential privacy for genomic data<a class="headerlink" href="#192a-differential-privacy-for-genomic-data" title="Permanent link">¶</a></h2>
+<p>Suppose you want to predict a phenotype (e.g., diabetes) from SNPs, but you cannot release individual genotypes. <strong>Differential privacy (DP)</strong> guarantees that the model's output does not depend too much on any single individual. <strong>DP-SGD</strong> (Abadi et al., 2016) clips per-sample gradients and adds calibrated noise during training.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">opacus</span><span class="w"> </span><span class="kn">import</span> <span class="n">PrivacyEngine</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">TensorDataset</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">SNPClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="sd">"""Minimal feed-forward classifier over a SNP vector."""</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n_snps</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">n_snps</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(),</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>        <span class="p">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># X_snps: (n_samples, n_snps) binary; y: (n_samples,) binary</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="n">dataset</span> <span class="o">=</span> <span class="n">TensorDataset</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_snps</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="n">model</span> <span class="o">=</span> <span class="n">SNPClassifier</span><span class="p">(</span><span class="n">n_snps</span><span class="o">=</span><span class="n">X_snps</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">)</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1"># Attach the privacy engine: noise_multiplier trades utility for privacy.</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="n">privacy_engine</span> <span class="o">=</span> <span class="n">PrivacyEngine</span><span class="p">()</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">loader</span> <span class="o">=</span> <span class="n">privacy_engine</span><span class="o">.</span><span class="n">make_private</span><span class="p">(</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="n">module</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">data_loader</span><span class="o">=</span><span class="n">loader</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>    <span class="n">noise_multiplier</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>   <span class="c1"># higher = more privacy</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="n">max_grad_norm</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>      <span class="c1"># per-sample gradient clipping bound</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="p">)</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="k">for</span> <span class="n">x_batch</span><span class="p">,</span> <span class="n">y_batch</span> <span class="ow">in</span> <span class="n">loader</span><span class="p">:</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="n">pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">x_batch</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>        <span class="n">loss</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">BCELoss</span><span class="p">()(</span><span class="n">pred</span><span class="p">,</span> <span class="n">y_batch</span><span class="p">)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>        <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="c1"># Report the privacy budget actually spent.</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="n">epsilon</span> <span class="o">=</span> <span class="n">privacy_engine</span><span class="o">.</span><span class="n">get_epsilon</span><span class="p">(</span><span class="n">delta</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Privacy budget used: ε=</span><span class="si">{</span><span class="n">epsilon</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Utility–privacy trade-off.</strong> Sweep the noise multiplier (e.g., 0.5, 1.0, 2.0, 5.0), record test accuracy and the spent <code>ε</code>, and plot accuracy vs. <code>ε</code>. For genomic data, <code>ε ≈ 3–5</code> often yields acceptable utility (accuracy drop &lt; 5%).</p>
+<p><strong>Pitfall:</strong> DP-SGD reduces accuracy, especially for rare variants. For small sample sizes (&lt; 10,000) it can degrade utility to near-random. In that regime, prefer federated learning with secure aggregation.</p>
 <h2 id="193-fairness-is-plural-and-contested">19.3  Fairness is plural and contested<a class="headerlink" href="#193-fairness-is-plural-and-contested" title="Permanent link">¶</a></h2>
 <p>For a clinical classifier with score <code>s</code>, sensitive attribute <code>a</code>, and label <code>y</code>:</p>
 <ul>
@@ -2608,26 +2819,85 @@
 <li><strong>Calibration</strong>: <code>P(y=1 | s, a)</code> equal across groups.</li>
 </ul>
 <p>An impossibility result (Kleinberg et al., 2016; Chouldechova, 2017) shows that, except in degenerate cases, calibration and equalized odds cannot both hold when base rates differ. <strong>You must choose which fairness criterion matches the clinical harm model — there is no universal answer.</strong></p>
+<h2 id="193a-a-worked-fairness-trade-off">19.3a  A worked fairness trade-off<a class="headerlink" href="#193a-a-worked-fairness-trade-off" title="Permanent link">¶</a></h2>
+<p>To make the impossibility tangible, simulate two populations whose risk scores are <em>perfectly calibrated</em> by construction, then check equalized odds.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">confusion_matrix</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="k">def</span><span class="w"> </span><span class="nf">simulate_calibrated_risk</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">):</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="sd">"""Generate a perfectly calibrated risk score and matching labels."""</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="n">risk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>         <span class="c1"># score</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">binomial</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">risk</span><span class="p">)</span>            <span class="c1"># P(y=1 | risk) = risk</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="k">return</span> <span class="n">risk</span><span class="p">,</span> <span class="n">y</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Group A and Group B differ in prevalence via the score distribution.</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">risk_A</span><span class="p">,</span> <span class="n">y_A</span> <span class="o">=</span> <span class="n">simulate_calibrated_risk</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="n">risk_B</span><span class="p">,</span> <span class="n">y_B</span> <span class="o">=</span> <span class="n">simulate_calibrated_risk</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10000</span><span class="p">)</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">t</span> <span class="o">=</span> <span class="mf">0.2</span>                                        <span class="c1"># treat if risk &gt; t</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">pred_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">risk_A</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="n">pred_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">risk_B</span> <span class="o">&gt;</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="k">def</span><span class="w"> </span><span class="nf">fpr_fnr</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="k">return</span> <span class="n">fp</span> <span class="o">/</span> <span class="p">(</span><span class="n">fp</span> <span class="o">+</span> <span class="n">tn</span><span class="p">),</span> <span class="n">fn</span> <span class="o">/</span> <span class="p">(</span><span class="n">fn</span> <span class="o">+</span> <span class="n">tp</span><span class="p">)</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="n">fpr_A</span><span class="p">,</span> <span class="n">fnr_A</span> <span class="o">=</span> <span class="n">fpr_fnr</span><span class="p">(</span><span class="n">y_A</span><span class="p">,</span> <span class="n">pred_A</span><span class="p">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="n">fpr_B</span><span class="p">,</span> <span class="n">fnr_B</span> <span class="o">=</span> <span class="n">fpr_fnr</span><span class="p">(</span><span class="n">y_B</span><span class="p">,</span> <span class="n">pred_B</span><span class="p">)</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Group A: FPR=</span><span class="si">{</span><span class="n">fpr_A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, FNR=</span><span class="si">{</span><span class="n">fnr_A</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Group B: FPR=</span><span class="si">{</span><span class="n">fpr_B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">, FNR=</span><span class="si">{</span><span class="n">fnr_B</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<p>When the groups have different base rates, calibration holds by construction but the false-positive and false-negative rates diverge, so equalized odds (<code>FPR_A = FPR_B</code> and <code>FNR_A = FNR_B</code>) cannot also hold.</p>
+<p><strong>Moral:</strong> Choose the fairness metric that matches the clinical harm model:</p>
+<ul>
+<li><strong>Calibration</strong> — when individual risk estimates drive shared decision-making.</li>
+<li><strong>Equalized odds</strong> — when algorithmic decisions may cause disparate impact (e.g., loan approval, pretrial detention).</li>
+</ul>
+<p><strong>Pitfall:</strong> Many papers report only one fairness metric, implying the model is "fair." Always report at least two (including calibration) and discuss the trade-offs.</p>
 <h2 id="194-worked-example-a-subgroup-bias-audit">19.4  Worked example — a subgroup bias audit<a class="headerlink" href="#194-worked-example-a-subgroup-bias-audit" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">subgroup_audit</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">min_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="sd">"""Per-group AUROC with a flag for disparities beyond 0.05."""</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">report</span><span class="p">,</span> <span class="n">aucs</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>        <span class="n">mask</span> <span class="o">=</span> <span class="n">group</span> <span class="o">==</span> <span class="n">g</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>        <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">min_n</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>            <span class="n">report</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"insufficient data"</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="k">continue</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="n">aucs</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">y_score</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="n">report</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">aucs</span><span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="k">if</span> <span class="n">aucs</span><span class="p">:</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="n">report</span><span class="p">[</span><span class="s2">"max_disparity"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">aucs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">aucs</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">3</span><span class="p">)</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">report</span><span class="p">[</span><span class="s2">"flag"</span><span class="p">]</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s2">"max_disparity"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.05</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="k">return</span> <span class="n">report</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">roc_auc_score</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">subgroup_audit</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_score</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">min_n</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="sd">"""Per-group AUROC with a flag for disparities beyond 0.05."""</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">report</span><span class="p">,</span> <span class="n">aucs</span> <span class="o">=</span> <span class="p">{},</span> <span class="p">{}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">group</span><span class="p">):</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>        <span class="n">mask</span> <span class="o">=</span> <span class="n">group</span> <span class="o">==</span> <span class="n">g</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">min_n</span> <span class="ow">or</span> <span class="nb">len</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">]))</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>            <span class="n">report</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"insufficient data"</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="k">continue</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>        <span class="n">aucs</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_true</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">y_score</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>        <span class="n">report</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">aucs</span><span class="p">[</span><span class="n">g</span><span class="p">],</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    <span class="k">if</span> <span class="n">aucs</span><span class="p">:</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        <span class="n">report</span><span class="p">[</span><span class="s2">"max_disparity"</span><span class="p">]</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">aucs</span><span class="o">.</span><span class="n">values</span><span class="p">())</span> <span class="o">-</span> <span class="nb">min</span><span class="p">(</span><span class="n">aucs</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span> <span class="mi">3</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        <span class="n">report</span><span class="p">[</span><span class="s2">"flag"</span><span class="p">]</span> <span class="o">=</span> <span class="n">report</span><span class="p">[</span><span class="s2">"max_disparity"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.05</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    <span class="k">return</span> <span class="n">report</span>
 </code></pre></div>
 <p>A disparity flag is the <em>start</em> of an investigation — diagnose whether it stems from sample size, label noise, or genuine model bias before mitigating.</p>
+<h2 id="194a-bias-across-thresholds-equal-opportunity-difference">19.4a  Bias across thresholds — equal opportunity difference<a class="headerlink" href="#194a-bias-across-thresholds-equal-opportunity-difference" title="Permanent link">¶</a></h2>
+<p>A model can be fair at one operating point and biased at another. The <strong>equal opportunity difference</strong> measures the true-positive-rate gap between groups at a threshold <code>t</code>: <span class="arithmatex">\( \text{EOD}(t) = |TPR_A(t) - TPR_B(t)| \)</span>. A model is fair if <code>EOD(t) ≤ δ</code> for every clinically relevant <code>t</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">equal_opportunity_difference</span><span class="p">(</span><span class="n">y_true_A</span><span class="p">,</span> <span class="n">y_score_A</span><span class="p">,</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>                                 <span class="n">y_true_B</span><span class="p">,</span> <span class="n">y_score_B</span><span class="p">,</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>                                 <span class="n">n_thresholds</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="sd">"""Maximum equal opportunity difference over a threshold sweep."""</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n_thresholds</span><span class="p">)</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">tpr_A</span><span class="p">,</span> <span class="n">tpr_B</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>        <span class="n">pred_A</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_score_A</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>        <span class="n">pred_B</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_score_B</span> <span class="o">&gt;=</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fn_A</span><span class="p">,</span> <span class="n">tp_A</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true_A</span><span class="p">,</span> <span class="n">pred_A</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>        <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fn_B</span><span class="p">,</span> <span class="n">tp_B</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_true_B</span><span class="p">,</span> <span class="n">pred_B</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>        <span class="n">tpr_A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp_A</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp_A</span> <span class="o">+</span> <span class="n">fn_A</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">tp_A</span> <span class="o">+</span> <span class="n">fn_A</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>        <span class="n">tpr_B</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tp_B</span> <span class="o">/</span> <span class="p">(</span><span class="n">tp_B</span> <span class="o">+</span> <span class="n">fn_B</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">tp_B</span> <span class="o">+</span> <span class="n">fn_B</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="n">eod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tpr_A</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tpr_B</span><span class="p">))</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="k">return</span> <span class="n">eod</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">eod</span><span class="p">)],</span> <span class="n">thresholds</span><span class="p">,</span> <span class="n">eod</span>
+</code></pre></div>
+<p><strong>Use case:</strong> For a sepsis-prediction model you might require <code>EOD ≤ 0.05</code> across all thresholds. If the maximum EOD exceeds 0.05, the model may disadvantage one group at the clinically relevant threshold.</p>
+<p><strong>Pitfall:</strong> EOD only captures true-positive-rate differences. It ignores false-positive differences, which may matter just as much (e.g., the harms of unnecessary treatment).</p>
 <h2 id="195-dual-use-and-responsible-disclosure">19.5  Dual-use and responsible disclosure<a class="headerlink" href="#195-dual-use-and-responsible-disclosure" title="Permanent link">¶</a></h2>
 <p>Generative biology models can lower the barrier to harm. Minimum responsible practice:</p>
 <ol>
@@ -2636,6 +2906,41 @@
 <li><strong>Staged release</strong> — gate weights, add refusal layers, log regulated requests (see Chapter 17).</li>
 <li><strong>Coordinated disclosure</strong> — notify biosecurity bodies before publishing dangerous methods.</li>
 </ol>
+<h2 id="195a-a-model-refusal-layer">19.5a  A model refusal layer<a class="headerlink" href="#195a-a-model-refusal-layer" title="Permanent link">¶</a></h2>
+<p>A refusal layer screens a request <em>before</em> generation, blocking prompts that mention hazardous agents or match known toxin motifs and logging the attempt for review.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="n">HAZARDOUS_KEYWORDS</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    <span class="s2">"botulinum"</span><span class="p">,</span> <span class="s2">"ricin"</span><span class="p">,</span> <span class="s2">"anthrax"</span><span class="p">,</span> <span class="s2">"smallpox"</span><span class="p">,</span> <span class="s2">"ebola"</span><span class="p">,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="s2">"neurotoxin"</span><span class="p">,</span> <span class="s2">"hemorrhagic"</span><span class="p">,</span> <span class="s2">"binary toxin"</span><span class="p">,</span> <span class="s2">"select agent"</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="p">]</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="n">HAZARDOUS_MOTIFS</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">"C.C.{10,}C"</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">),</span>   <span class="c1"># placeholder toxin-fold pattern</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="c1"># Add curated patterns from a screening database.</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="p">]</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="k">def</span><span class="w"> </span><span class="nf">safe_generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">,</span> <span class="n">model</span><span class="p">):</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="sd">"""Refuse hazardous requests; otherwise delegate to the model."""</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>    <span class="n">prompt_lower</span> <span class="o">=</span> <span class="n">prompt</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>    <span class="k">for</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">HAZARDOUS_KEYWORDS</span><span class="p">:</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>        <span class="k">if</span> <span class="n">kw</span> <span class="ow">in</span> <span class="n">prompt_lower</span><span class="p">:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>            <span class="k">return</span> <span class="p">(</span><span class="s2">"Refused: request mentions a hazardous agent. "</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>                    <span class="s2">"Please contact the institutional biosafety committee."</span><span class="p">)</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>    <span class="n">seq_match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">"[ACDEFGHIKLMNPQRSTVWY]{10,}"</span><span class="p">,</span> <span class="n">prompt</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="k">if</span> <span class="n">seq_match</span><span class="p">:</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>        <span class="n">seq</span> <span class="o">=</span> <span class="n">seq_match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>        <span class="k">for</span> <span class="n">motif</span> <span class="ow">in</span> <span class="n">HAZARDOUS_MOTIFS</span><span class="p">:</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>            <span class="k">if</span> <span class="n">motif</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">seq</span><span class="p">):</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>                <span class="k">return</span> <span class="p">(</span><span class="s2">"Refused: requested sequence matches a known hazardous "</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>                        <span class="s2">"motif. Logging this request for review."</span><span class="p">)</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>    <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>Logging:</strong> Record every refused request with a timestamp, the authenticated user ID (if available), and the prompt. Audit the log regularly.</p>
+<p><strong>Pitfall:</strong> A refusal layer is a deterrent, not a guarantee — a determined actor can rephrase prompts or switch models. It must sit inside a broader posture of access control, usage limits, and human review.</p>
 <h2 id="196-ecological-and-non-human-ethics">19.6  Ecological and non-human ethics<a class="headerlink" href="#196-ecological-and-non-human-ethics" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Released organisms</strong> (engineered microbes, gene drives) demand reversibility plans and ecosystem modeling (Chapter 14).</li>
@@ -2644,8 +2949,8 @@
 </ul>
 <h2 id="197-pitfalls">19.7  Pitfalls<a class="headerlink" href="#197-pitfalls" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Fairness theater.</strong> Reporting one parity metric while the clinically relevant harm is governed by another.</li>
-<li><strong>Consent laundering.</strong> Treating public availability as consent for model training.</li>
+<li><strong>Fairness theater.</strong> Reporting one parity metric (e.g., demographic parity) while a more clinically relevant metric (e.g., calibration by race) goes unmeasured. A model that equalizes false-positive rates can still have wildly different false-negative rates, so patients in one group are missed more often. Always publish a <strong>fairness dashboard</strong> of multiple metrics and discuss the trade-offs.</li>
+<li><strong>Consent laundering.</strong> Treating public availability as consent for model training. Participants in a public dataset (e.g., the 1000 Genomes Project) did not consent to foundation-model training or commercial reuse. Best practice: contact the data access committee, negotiate a data use agreement, and respect restrictions (no commercial use, no re-identification). <strong>Remedy:</strong> add a "Consent and Data Use" section to every model card, naming the original consent scope and any deviations.</li>
 <li><strong>"Open" as a default.</strong> Openness is a virtue for reproducibility and a hazard for dual-use; the right answer is capability-dependent.</li>
 </ul>
 <h2 id="198-exercises">19.8  Exercises<a class="headerlink" href="#198-exercises" title="Permanent link">¶</a></h2>
@@ -2654,6 +2959,10 @@
 <li><strong>DP cost curve.</strong> Train a classifier with DP-SGD at several <code>ε</code> budgets. Plot accuracy vs. privacy.</li>
 <li><strong>Re-identification.</strong> Demonstrate (on synthetic data) how a 30-SNP fingerprint uniquely indexes individuals in a cohort.</li>
 <li><strong>Dual-use rubric.</strong> Write a one-page threat model for a hypothetical enzyme-design model and recommend a release strategy.</li>
+<li><strong>DP-SGD for a genomic model.</strong> Apply the <code>opacus</code> example to a small genomic dataset (e.g., 10,000 individuals, 1,000 SNPs). Sweep the noise multiplier from 0.1 to 5.0 and plot test AUROC vs. <code>ε</code>. At what <code>ε</code> does utility drop below a usable threshold (e.g., AUROC &lt; 0.7)? Is that acceptable for a clinical application?</li>
+<li><strong>Fairness trade-off simulation.</strong> Simulate a clinical risk model with base rates 5% and 20% for two groups, perfectly calibrated in each. Pick a decision threshold and compute FPR and FNR per group. Then adjust one group's threshold to equalize FPR — what happens to calibration? Which approach is preferable for a cancer screening test? For a pretrial risk assessment?</li>
+<li><strong>Refusal layer for a protein-design API.</strong> Build a small Flask or FastAPI app that returns a (mock or real) protein sequence and implements keyword and motif screening. Test benign prompts ("design a binder to IL-7R") and harmful prompts ("design a toxin similar to botulinum"), and log the attempts.</li>
+<li><strong>Consent laundering audit.</strong> Find a public genomic dataset (e.g., from GEO), read its original consent language, and decide whether it permits training commercial AI models. If not, draft a data use agreement that would allow such training while respecting participant intent.</li>
 </ol>
 <h2 id="199-further-reading">19.9  Further reading<a class="headerlink" href="#199-further-reading" title="Permanent link">¶</a></h2>
 <ul>
@@ -2661,6 +2970,10 @@
 <li>Chouldechova, A. <em>Fair prediction with disparate impact.</em> Big Data (2017).</li>
 <li>Char, D. S. <em>Implementing machine learning in health care.</em> NEJM (2018).</li>
 <li>Carroll, S. R. <em>The CARE principles for Indigenous data governance.</em> Data Sci. J. (2020).</li>
+<li>Abadi, M. et al. <em>Deep learning with differential privacy.</em> CCS (2016) — the original DP-SGD paper.</li>
+<li>Hardt, M. et al. <em>Equality of opportunity in supervised learning.</em> NeurIPS (2016) — formal fairness definitions.</li>
+<li>Bender, E. M. et al. <em>On the dangers of stochastic parrots: can language models be too big?</em> FAccT (2021) — relevant to foundation models in biology.</li>
+<li>National Academies of Sciences, Engineering, and Medicine. <em>Biosecurity in the age of AI.</em> Report (2024) — comprehensive recommendations.</li>
 </ul>
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h2>
 <ul>
