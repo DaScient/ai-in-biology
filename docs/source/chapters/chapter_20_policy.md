@@ -368,7 +368,6 @@ def start_server():
 - Mitchell, M. *Model cards for model reporting.* FAT* (2019).
 - US FDA. *Marketing Submission Recommendations for a Predetermined Change Control Plan for Machine Learning-Enabled Device Software Functions* (final guidance, 2023).
 - European Parliament. *EU AI Act: full text and implications for medical devices* (2024).
-- Gerke, S. et al. *The need for a system view to regulate AI/ML-based software as a medical device.* npj Digit. Med. (2020).
 - UK MHRA. *Guidance on AI as a Medical Device* (2024).
 
 ## See also
