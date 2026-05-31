@@ -1,5 +1,8 @@
 name: Build Docs
 
+# Validation-only check for the MkDocs site. Publishing to GitHub Pages is
+# handled by the unified deploy-pages.yml workflow, so this workflow no longer
+# runs `mkdocs gh-deploy` (which would push a competing gh-pages branch).
 on:
   push:
     branches: [main]
@@ -14,7 +17,7 @@ on:
       - "mkdocs.yml"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build:
@@ -36,7 +39,3 @@ jobs:
 
       - name: Build docs
         run: mkdocs build --strict
-
-      - name: Deploy to GitHub Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: mkdocs gh-deploy --force

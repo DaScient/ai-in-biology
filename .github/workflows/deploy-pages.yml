@@ -1,21 +1,28 @@
-name: Deploy Frontend to GitHub Pages
+name: Deploy Site to GitHub Pages
 
+# Single source of truth for https://dascient.github.io/ai-in-biology/
+# Layout published to Pages:
+#   /            -> root index.html landing page (homepage)
+#   /docs/       -> MkDocs documentation site
+#   /app/        -> Astro interactive frontend
 on:
   push:
     branches: [main]
     paths:
+      - 'index.html'
       - 'frontend/**'
-      - 'api/notebooks/**'
-      - 'docs/source/**'
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - '.github/workflows/deploy-pages.yml'
   workflow_dispatch:
 
-# Allow GitHub Pages deployment
+# Permissions required to deploy to GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Concurrency control
+# Allow only one concurrent deployment, without cancelling in-progress runs
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -26,6 +33,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -42,20 +51,29 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install dependencies
+      - name: Build documentation (MkDocs)
+        run: |
+          pip install -r docs/requirements.txt
+          mkdocs build --strict --site-dir _site/docs
+
+      - name: Build frontend (Astro)
         run: |
           cd frontend
           npm ci
-
-      - name: Build site
-        run: |
-          cd frontend
           npm run build
+          cd ..
+          mkdir -p _site/app
+          cp -r frontend/dist/. _site/app/
+
+      - name: Add homepage and root assets
+        run: |
+          cp index.html _site/index.html
+          touch _site/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: _site
 
   deploy:
     environment:
