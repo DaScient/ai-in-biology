@@ -115,8 +115,9 @@ def decision_curve(y_true, y_pred_prob, thresholds=np.linspace(0.01, 0.99, 50)):
         nb = (tp / n) - (fp / n) * (t / (1 - t))
         nb_model.append(nb)
 
-        # Treat all (if you treated every patient)
-        nb_all = (np.sum(y_true) / n) - (n / n) * (t / (1 - t))
+        # Treat all (if you treated every patient): every positive is a TP,
+        # every negative is a FP.
+        nb_all = (np.sum(y_true) / n) - ((n - np.sum(y_true)) / n) * (t / (1 - t))
         nb_treat_all.append(nb_all)
 
         # Treat none (net benefit = 0 by definition)
@@ -242,7 +243,7 @@ A Predetermined Change Control Plan (PCCP) lets a team pre-authorize specific mo
 **PCCP document outline (for a model that retrains quarterly):**
 
 1. **SaMD Pre-Specifications (SPS)**
-   - **Input data types:** Chest X-ray (DICOM), format CXR, pixel spacing 0.1–0.5 mm.
+   - **Input data types:** Chest X-ray (DICOM), format: CXR, pixel spacing 0.1–0.5 mm.
    - **Outputs:** Probability of pneumonia (0–1), bounding boxes if present.
    - **Architecture:** DenseNet-121 with last layer retrained; embedding dimension 1024.
    - **Performance thresholds:** AUROC ≥ 0.90 (95% CI lower bound ≥ 0.88) on validation set.
@@ -262,7 +263,7 @@ A Predetermined Change Control Plan (PCCP) lets a team pre-authorize specific mo
 
 4. **Post-market monitoring**
    - Real-world performance dashboard updated weekly.
-   - If AUROC drops below 0.85 in any week for > 10 consecutive days, alert to clinical safety officer.
+   - If real-world AUROC drops below 0.85 for more than 10 consecutive days, alert to clinical safety officer.
 
 **Pitfall:** A PCCP is not a waiver from clinical validation. The initial submission must still include robust evidence. The PCCP only governs *changes* after approval.
 
