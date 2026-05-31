@@ -134,28 +134,29 @@ mislabeled files before they enter the pipeline.
 
 ```python
 import os
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 class RNASeqSample(BaseModel):
-    sample_id: str = Field(..., regex=r'^[A-Z0-9]{6,12}$')
-    condition: str = Field(..., regex='^(control|treatment|disease)$')
+    sample_id: str = Field(..., pattern=r'^[A-Z0-9]{6,12}$')
+    condition: str = Field(..., pattern='^(control|treatment|disease)$')
     read_count: int = Field(..., gt=0, lt=1e9)
     genes_detected: int = Field(..., gt=0)
     percent_ribosomal: float = Field(..., ge=0, le=100)
     fastq_path: str
     metadata_schema_version: str = "1.0"
 
-    @validator('fastq_path')
+    @field_validator('fastq_path')
+    @classmethod
     def file_exists(cls, v):
         if not os.path.exists(v):
             raise ValueError(f'FASTQ file {v} not found')
         return v
 
-    @validator('genes_detected')
-    def genes_less_than_total(cls, v, values):
-        if 'read_count' in values and v > values['read_count']:
+    @model_validator(mode='after')
+    def genes_less_than_total(self):
+        if self.genes_detected > self.read_count:
             raise ValueError('genes_detected cannot exceed read_count')
-        return v
+        return self
 ```
 
 Integrate validation right after landing: load the sidecar metadata and reject any file
@@ -227,8 +228,9 @@ import dask.array as da
 
 zarr_array = zarr.open('data/raw/image.zarr', mode='r')
 dask_array = da.from_zarr(zarr_array, chunks=(1024, 1024, 1))
-for tile in dask_array.blocks:
-    compute_on_tile(tile)
+# Apply a function to each chunk lazily, then trigger computation tile by tile.
+result = dask_array.map_blocks(compute_on_tile)
+result.compute()
 ```
 
 > See **Exercise 4.6c** to compute a column-wise mean over a 50 GB `numpy.memmap` without
