@@ -25,7 +25,7 @@ The definition above is abstract. Here is a **simple toy problem** that illustra
 
 **Problem.** A chemical reaction has an unknown rate constant \( k \). You may measure the concentration at a single time point \( t \). Which \( t \) maximizes information about \( k \)?
 
-**Model.** \( C(t) = C_0 e^{-kt} + \epsilon \), with \( \epsilon \sim \mathcal{N}(0, \sigma^2) \). Prior: \( k \sim \text{LogNormal}(\mu = 0, \sigma = 0.5) \).
+**Model.** \( C(t) = C_0 e^{-kt} + \epsilon \), with \( \epsilon \sim \mathcal{N}(0, \sigma^2) \). Prior: \( k \sim \text{LogNormal}(\mu = 0, \sigma = 0.5) \), where \( \mu \) and \( \sigma \) are the mean and standard deviation of the *underlying normal* (i.e. of \( \log k \)), not of \( k \) itself.
 
 **BOED approach.**
 
@@ -275,7 +275,7 @@ Section 18.5 lists orthogonal assays. Here is a **concrete confirmatory design**
 ```python
 from statsmodels.stats.power import tt_ind_solve_power
 
-effect_size = 0.3  # expected difference in proliferation rate (e.g. 0.5 vs 0.35)
+effect_size = 0.3  # Cohen's d (standardized effect size), not a raw rate difference
 alpha = 0.01
 power = 0.8
 n = tt_ind_solve_power(effect_size=effect_size, alpha=alpha,
