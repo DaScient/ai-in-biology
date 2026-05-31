@@ -258,7 +258,7 @@ The pointers above are deliberately brief. For a biologist who has completed thi
 
 | Month | Focus | Resources | Deliverable |
 |-------|-------|-----------|-------------|
-| 1–2 | **Deepen probability & statistics** | *Statistical Rethinking* (McElreath), *Probabilistic Programming & Bayesian Inference* (GitHub) | Implement a hierarchical model in PyMC |
+| 1–2 | **Deepen probability & statistics** | *Statistical Rethinking* (McElreath), *Probabilistic Programming & Bayesian Methods for Hackers* (Davidson-Pilon, GitHub) | Implement a hierarchical model in PyMC |
 | 3–4 | **Optimization & deep learning fundamentals** | *Dive into Deep Learning* (Zhang et al.), fast.ai course | Train a CNN on a biological image dataset |
 | 5–6 | **Causal inference** | *Causal Inference: What If* (Hernán & Robins), *The Book of Why* (Pearl) | Apply Mendelian randomization to a GWAS |
 | 7–8 | **Domain-specific project (choose one)** | Protein design (RFdiffusion tutorial), single-cell (scvi-tools), ecology (blockCV) | Reproduce a published result in a Colab notebook |
