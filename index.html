@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AI in Biological Sciences · Interactive Textbook Hub</title>
+    <meta name="description" content="Next‑gen textbook with live code, interactive workshops, and reproducible AI for genomics, protein design, and ecology.">
+    <meta name="keywords" content="AI, biology, interactive learning, reproducible, DNA language models, protein design, single-cell, workshops">
+    <meta name="author" content="Don D.M. Tadaya · DaScient Press">
+    <meta property="og:title" content="AI in Biological Sciences">
+    <meta property="og:description" content="Run code live, explore ethics, and adopt AI in life sciences — fully reproducible.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
+    <!-- Tailwind CSS + Inter -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Pyodide for live Python execution -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.26.1/full/pyodide.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0a2f44 0%, #0b3b3f 100%);
+        }
+        .card-hover {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.2);
+        }
+        .code-editor {
+            background: #1e293b;
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+        #pyodide-loading {
+            transition: opacity 0.3s;
+        }
+        .interactive-pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+            100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+        }
+        .workshop-timeline {
+            border-left: 2px solid #e2e8f0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <!-- Hero Section with Live Code Teaser -->
+    <section class="gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M30 5 L45 15 L45 35 L30 45 L15 35 L15 15 Z" fill="none" stroke="white" stroke-width="0.5"/%3E%3C/svg%3E')]"></div>
+        <div class="max-w-7xl mx-auto px-6 py-16 md:py-24 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-10 items-center">
+                <div class="lg:w-3/5">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+                        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                        <span>Interactive · Reproducible · Ethical</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">AI in Biological Sciences</h1>
+                    <p class="text-xl md:text-2xl text-indigo-100 mt-4">Theory, Applications, Practice, and Society</p>
+                    <p class="text-base md:text-lg text-gray-200 mt-6 border-l-4 border-emerald-400 pl-4 italic">“A genome is a four‑letter manuscript; a cell, an executing program.”</p>
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <a href="#interactive-demo" class="bg-white text-gray-900 hover:bg-gray-100 px-6 py-3 rounded-xl font-semibold transition shadow-md">🧪 Live coding demo</a>
+                        <a href="#workshop-kit" class="border border-white hover:bg-white/10 px-6 py-3 rounded-xl font-semibold transition">📦 Workshop toolkit</a>
+                        <a href="#resource-hub" class="border border-white/40 hover:bg-white/10 px-6 py-3 rounded-xl font-semibold transition">📚 Resource hub</a>
+                    </div>
+                </div>
+                <div class="lg:w-2/5 bg-white/5 backdrop-blur-md rounded-2xl p-5 border border-white/30 shadow-xl">
+                    <div class="font-mono text-sm space-y-2">
+                        <div class="text-emerald-300">$ git clone https://github.com/dascient/ai-bio-interactive</div>
+                        <div class="text-gray-200">$ conda env create -f environment.yml</div>
+                        <div class="text-gray-200">$ jupyter lab --ContentsManager.allow_hidden=True</div>
+                        <div class="h-px bg-white/20 my-2"></div>
+                        <div class="text-gray-300 flex justify-between"><span>🚀 Live session launched:</span><span class="text-emerald-300">146 connected learners</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Live Python Demo (Shannon Entropy) -->
+    <section id="interactive-demo" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="text-center mb-8">
+            <span class="text-indigo-600 font-semibold uppercase tracking-wide">Live computational biology</span>
+            <h2 class="text-3xl md:text-4xl font-bold mt-2">Run entropy on real DNA</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">From Chapter 1 — execute the Shannon entropy code directly in your browser. Edit the sequence and see the information content change.</p>
+        </div>
+        <div class="flex flex-col lg:flex-row gap-8">
+            <div class="lg:w-1/2 bg-gray-900 rounded-2xl overflow-hidden shadow-lg">
+                <div class="bg-gray-800 px-4 py-2 flex justify-between items-center">
+                    <span class="text-gray-300 text-sm font-mono">🐍 entropy_calculator.py</span>
+                    <button id="runPyodideBtn" class="bg-emerald-600 hover:bg-emerald-500 text-white text-xs px-3 py-1 rounded-md transition">▶ Run</button>
+                </div>
+                <div class="p-4">
+                    <textarea id="codeEditor" rows="12" class="w-full bg-gray-900 text-gray-100 font-mono text-sm border-0 focus:ring-0 resize-none" spellcheck="false">import math
+from collections import Counter
+
+def shannon_entropy(seq: str) -> float:
+    """Return Shannon entropy (bits/symbol) for a DNA sequence."""
+    counts = Counter(seq.upper())
+    n = sum(counts.values())
+    return -sum((c / n) * math.log2(c / n) for c in counts.values() if c)
+
+# E. coli oriC region (252 bp) – try modifying!
+oric = "GGATCCTGGGTATTAAAAAGAAGATCTATTTATTTAGAGATCTGTTCTATTGTGATCTCTTATTAGGATCGCACTGCCCTGTGGATAACAAGGATCCGGCTTTTAAGATCAACAACCTGGAAAGGATCATTAACTGTGAATGATCGGTGATCCTGGACCGTATAAGCTGGGATCAGAATGAGGGGTTATACACAACTCAAAAACTGAACAACAGTTGTTCTTTGGATAACTACCGGTTGATCCAAGCTTCCT"
+
+print(f"H(oriC) = {shannon_entropy(oric):.3f} bits/base")
+print("Max possible entropy (uniform) = 2.0 bits/base")</textarea>
+                </div>
+            </div>
+            <div class="lg:w-1/2 bg-white rounded-2xl shadow-lg border border-gray-200 flex flex-col">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200 font-semibold text-gray-700">📟 Output console</div>
+                <div id="pyodideOutput" class="p-4 font-mono text-sm bg-gray-900 text-green-300 rounded-b-2xl flex-grow" style="min-height: 280px;">
+                    <span class="text-gray-400">// click 'Run' to execute Python in browser (Pyodide)</span>
+                </div>
+                <div id="pyodide-loading" class="text-xs text-gray-500 p-2 border-t text-center hidden">Loading Python kernel... (first run may take a few seconds)</div>
+            </div>
+        </div>
+        <p class="text-center text-sm text-gray-500 mt-4">⚡ Powered by Pyodide – fully client‑side, no server. Every run matches the textbook’s reproducible environment.</p>
+    </section>
+
+    <!-- Enhanced Table of Contents with interactive preview -->
+    <section id="chapters" class="bg-gray-100 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="text-indigo-600 font-semibold uppercase">Structure & Interactive preview</span>
+                <h2 class="text-3xl font-bold mt-2">24 chapters · 8 parts · live notebooks</h2>
+                <p class="text-gray-600">Hover any chapter to see key reproducibility artifacts</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="font-bold text-xl mb-3 flex items-center gap-2"><span class="text-indigo-600">📘</span> Part I – Foundations</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group cursor-default"><span>1. Biology as Information Science</span><span class="text-xs text-gray-400 group-hover:text-emerald-600">📓 Colab · 🐳 Docker</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>2. DNA Language Models</span><span class="text-xs text-gray-400 group-hover:text-emerald-600">🧬 BPE tokenizer · 🚀 GPU notebook</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>3. Attention in Genomics</span><span class="text-xs text-gray-400 group-hover:text-emerald-600">🔍 Hi‑C comparison · 📈 attention maps</span></div>
+                    </div>
+                    <h3 class="font-bold text-xl mt-6 mb-2 flex items-center gap-2"><span class="text-indigo-600">📊</span> Part II – Methods & Data</h3>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>4. Biological Data Across Scales</span><span class="text-xs text-gray-400">Zarr, AnnData, CRAM</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>5. Representation Learning</span><span class="text-xs text-gray-400">InfoNCE, contrastive</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>6. Modeling Living Systems</span><span class="text-xs text-gray-400">Neural ODEs, ABM</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>7. Genomics & Regulation</span><span class="text-xs text-gray-400">Enformer, DeepVariant</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>8. Protein Structure & Design</span><span class="text-xs text-gray-400">RFdiffusion, ESMFold</span></div>
+                        <div class="flex justify-between items-center border-b border-gray-100 py-1 group"><span>9. Single‑Cell Intelligence</span><span class="text-xs text-gray-400">scVI, scGPT, totalVI</span></div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-md">
+                    <h3 class="font-bold text-xl mb-3 flex items-center gap-2"><span class="text-indigo-600">🌍</span> Systems · Applications · Frontiers</h3>
+                    <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+                        <div>10. Development & Morphogenesis</div><div class="text-gray-500">OT, spatial graphs</div>
+                        <div>11. Neuroscience & LFADS</div><div class="text-gray-500">CEBRA, Kilosort</div>
+                        <div>12. Ethology & Social</div><div class="text-gray-500">DeepLabCut, MoSeq</div>
+                        <div>13. Evolutionary Dynamics</div><div class="text-gray-500">coalescent, MLDE</div>
+                        <div>14. Ecology & Conservation</div><div class="text-gray-500">SDM, early warning</div>
+                        <div>15. Earth Systems</div><div class="text-gray-500">Prithvi, GEDI</div>
+                        <div>16. Medicine & Healthcare</div><div class="text-gray-500">DCA, PCCP</div>
+                        <div>17. Biotech & Engineering</div><div class="text-gray-500">DBTL, IgFold</div>
+                        <div>18. Experimental Design</div><div class="text-gray-500">BALD, BOED</div>
+                        <div>19–21. Ethics · Policy · Society</div><div class="text-gray-500">model cards, fairness</div>
+                        <div>22–24. Co‑evolution & Limits</div><div class="text-gray-500">self‑driving labs</div>
+                    </div>
+                    <div class="mt-6 pt-3 border-t text-sm bg-indigo-50 p-3 rounded-lg">
+                        🎓 <strong>Instructor dashboard</strong>: pre‑built quizzes, auto‑graded notebooks, and slide decks for each chapter → <a href="#" class="text-indigo-700 underline">request access</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Workshop Toolkit & interactive scheduler -->
+    <section id="workshop-kit" class="max-w-7xl mx-auto px-6 py-20">
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-1/2">
+                <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-4">🎯 Workshop ready</div>
+                <h2 class="text-3xl font-bold">Hands‑on kit for instructors & facilitators</h2>
+                <p class="text-gray-600 mt-3 text-lg">Deploy a 2‑day interactive workshop or integrate into existing courses.</p>
+                <ul class="mt-6 space-y-4">
+                    <li class="flex gap-3"><span class="text-emerald-600">▹</span> <strong>Live‑coded sessions</strong> – 12 pre‑built modules (DNA LMs, attention, single‑cell, protein design)</li>
+                    <li class="flex gap-3"><span class="text-emerald-600">▹</span> <strong>Auto‑graded assignments</strong> – using Otter‑Grader + GitHub Classroom</li>
+                    <li class="flex gap-3"><span class="text-emerald-600">▹</span> <strong>Cloud GPU credits</strong> – sponsored for workshop participants (AWS / Lambda Labs)</li>
+                    <li class="flex gap-3"><span class="text-emerald-600">▹</span> <strong>Customizable schedule</strong> – drag‑and‑drop timeline below</li>
+                </ul>
+                <div class="mt-8 bg-gray-900 rounded-xl p-5 text-white">
+                    <pre class="text-sm font-mono text-emerald-300"><span class="text-gray-400"># One‑command workshop environment</span>
+curl -sSL https://dascient.org/workshop | bash
+<span class="text-gray-400"># spawns JupyterHub with all dependencies + sample data</span></pre>
+                </div>
+            </div>
+            <div class="lg:w-1/2 bg-white rounded-2xl shadow-xl p-6 border border-gray-200">
+                <h3 class="text-xl font-bold mb-3 flex items-center gap-2">📅 Interactive workshop builder</h3>
+                <div class="workshop-timeline pl-4 space-y-4">
+                    <div class="relative">
+                        <div class="absolute -left-2 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <div class="ml-4"><span class="font-bold">Day 1 – AM:</span> DNA language models & tokenization (hands‑on: train TinyDNABERT on bacterial genomes)</div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-2 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <div class="ml-4"><span class="font-bold">Day 1 – PM:</span> Attention maps & variant effect prediction (Enformer + in‑silico mutagenesis)</div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-2 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <div class="ml-4"><span class="font-bold">Day 2 – AM:</span> Protein structure & design (RFdiffusion + ProteinMPNN + AF2 rescoring)</div>
+                    </div>
+                    <div class="relative">
+                        <div class="absolute -left-2 w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <div class="ml-4"><span class="font-bold">Day 2 – PM:</span> Single‑cell foundation models & ethics case study (scGPT, fairness audit)</div>
+                    </div>
+                </div>
+                <div class="mt-6 p-3 bg-indigo-50 rounded-lg flex justify-between items-center">
+                    <span class="text-indigo-800">📧 Request facilitator guide & slide decks</span>
+                    <button class="bg-indigo-600 text-white px-4 py-1 rounded-lg text-sm">Download kit</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resource Hub & Advanced Content Delivery -->
+    <section id="resource-hub" class="bg-gray-100 py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold">📡 Advanced content delivery</h2>
+                <p class="text-gray-600">Real‑time dashboards · Notebook streaming · Binder integration · Model cards</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white rounded-xl p-5 shadow-sm card-hover">
+                    <div class="text-3xl mb-3">📓</div>
+                    <h3 class="font-bold text-xl">Live Notebook Gallery</h3>
+                    <p class="text-gray-600 text-sm mt-1">50+ executable Jupyter notebooks, indexed by chapter. One‑click launch on Colab, Binder, or Deepnote.</p>
+                    <div class="mt-3 flex gap-2 text-xs text-indigo-600"><span>🔬 16S rRNA MLM</span><span>🧬 Promoter design</span><span>🐍 scVI tutorial</span></div>
+                </div>
+                <div class="bg-white rounded-xl p-5 shadow-sm card-hover">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-bold text-xl">Reproducibility dashboard</h3>
+                    <p class="text-gray-600 text-sm mt-1">Live GitHub Actions status, container builds, and data versioning (DVC) for all figures.</p>
+                    <div class="mt-3 h-2 bg-gray-200 rounded-full overflow-hidden"><div class="bg-emerald-500 w-[94%] h-full"></div></div>
+                    <p class="text-xs text-gray-500 mt-2">✅ 94% of notebooks pass latest CI</p>
+                </div>
+                <div class="bg-white rounded-xl p-5 shadow-sm card-hover">
+                    <div class="text-3xl mb-3">📄</div>
+                    <h3 class="font-bold text-xl">Model Card Generator</h3>
+                    <p class="text-gray-600 text-sm mt-1">Create FDA‑style model cards for your own projects using our web widget. Export JSON / PDF.</p>
+                    <button class="mt-2 text-sm bg-gray-800 text-white px-3 py-1 rounded-md">Launch tool →</button>
+                </div>
+            </div>
+            <!-- Real‑world applicability video / case study -->
+            <div class="mt-12 bg-gradient-to-r from-slate-800 to-slate-900 rounded-2xl p-6 text-white">
+                <div class="flex flex-col md:flex-row gap-6 items-center">
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold">🌍 Real‑world case: AI‑designed proteins in the lab</h3>
+                        <p class="text-gray-200 mt-2">In 2025, a team used RFdiffusion + ProteinMPNN (Chapter 8) to generate a novel antiviral minibinder. Within 3 rounds of active learning, they achieved 100× improved neutralization. The entire design loop – from in‑silico to validation – is reproduced in the textbook’s public repository.</p>
+                        <div class="mt-4 flex gap-3">
+                            <span class="bg-emerald-700 px-3 py-1 text-xs rounded-full">📄 pre‑print</span>
+                            <span class="bg-emerald-700 px-3 py-1 text-xs rounded-full">🔬 binder data</span>
+                            <span class="bg-emerald-700 px-3 py-1 text-xs rounded-full">🧬 sequences</span>
+                        </div>
+                    </div>
+                    <div class="md:w-1/3 text-center">
+                        <div class="text-6xl">⚡🧪</div>
+                        <p class="text-sm text-indigo-200 mt-2">“From code to kd in weeks”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community & AI Focus Groups -->
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <div class="bg-white rounded-2xl shadow-lg p-8 border border-gray-100 flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-1/2">
+                <div class="text-4xl mb-2">🤝</div>
+                <h3 class="text-2xl font-bold">Join the AI Biology Focus Group</h3>
+                <p class="text-gray-600 mt-2">Monthly virtual sessions: reproduce key results, discuss open challenges (Chapter 23), and share teaching materials. Open to educators, researchers, and industry bioinformaticians.</p>
+                <div class="flex gap-3 mt-5">
+                    <button class="bg-indigo-600 text-white px-5 py-2 rounded-lg hover:bg-indigo-700 transition">Slack community →</button>
+                    <button class="border border-gray-300 px-5 py-2 rounded-lg">📅 Calendar of events</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-3 text-sm">
+                <div class="bg-gray-50 p-3 rounded-lg text-center">🎙️ “Reproducibility in genomics” – May 2026</div>
+                <div class="bg-gray-50 p-3 rounded-lg text-center">🧬 “Protein design with RFdiffusion” – June 2026</div>
+                <div class="bg-gray-50 p-3 rounded-lg text-center">📊 “Single‑cell foundation models” – July 2026</div>
+                <div class="bg-gray-50 p-3 rounded-lg text-center">⚖️ “Ethics & dual‑use” – Aug 2026</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to action / Adoption -->
+    <section class="gradient-bg text-white py-16 mt-8">
+        <div class="max-w-4xl mx-auto text-center px-6">
+            <h2 class="text-3xl md:text-4xl font-bold">Shape the future of AI‑driven biology</h2>
+            <p class="text-lg text-indigo-100 mt-3">Open access pre‑print · Interactive platform · Full reproducibility guarantee</p>
+            <div class="flex flex-wrap justify-center gap-5 mt-10">
+                <a href="#" class="bg-white text-gray-900 hover:bg-gray-100 px-8 py-3 rounded-xl font-semibold shadow-lg transition">📖 Read sample chapter (PDF + notebook)</a>
+                <a href="#" class="border border-white hover:bg-white/10 px-8 py-3 rounded-xl font-semibold transition">⭐ Star us on GitHub</a>
+                <a href="#" class="border border-white/40 hover:bg-white/10 px-8 py-3 rounded-xl font-semibold transition">🎓 Adopt for your class</a>
+            </div>
+            <p class="text-sm text-indigo-200 mt-8">ISBN 978‑0‑997‑00000‑0 · DaScient Press 2026 · CC‑BY‑NC‑SA 4.0 + MIT code</p>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-3 text-sm">
+            <div>© 2026 DaScient Press — Built for reproducibility & interactive learning</div>
+            <div class="flex gap-5">
+                <a href="#" class="hover:text-white">Code of conduct</a>
+                <a href="#" class="hover:text-white">Reproducibility pledge</a>
+                <a href="#" class="hover:text-white">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Pyodide initialization + runner -->
+    <script>
+        let pyodideReady = false;
+        let pyodide = null;
+        const loadingDiv = document.getElementById('pyodide-loading');
+        const outputDiv = document.getElementById('pyodideOutput');
+        const runBtn = document.getElementById('runPyodideBtn');
+        const codeEditor = document.getElementById('codeEditor');
+
+        async function loadPyodideAndRun() {
+            if (!pyodideReady) {
+                loadingDiv.classList.remove('hidden');
+                outputDiv.innerHTML = '<span class="text-yellow-300">⏳ Loading Python engine (Pyodide) — please wait, first load takes ~10s...</span>';
+                try {
+                    pyodide = await loadPyodide({ indexURL: "https://cdn.jsdelivr.net/pyodide/v0.26.1/full/" });
+                    await pyodide.runPythonAsync(`
+import sys
+import micropip
+await micropip.install('micropip')
+# no extra deps needed for basic entropy
+                    `);
+                    pyodideReady = true;
+                    loadingDiv.classList.add('hidden');
+                    outputDiv.innerHTML = '<span class="text-green-300">✅ Pyodide ready. Click Run to execute code.</span>';
+                } catch(err) {
+                    loadingDiv.classList.add('hidden');
+                    outputDiv.innerHTML = `<span class="text-red-400">Failed to load Pyodide: ${err}</span>`;
+                    return;
+                }
+            }
+            // run current code
+            const code = codeEditor.value;
+            outputDiv.innerHTML = '<span class="text-gray-400">⏳ Executing...</span>';
+            try {
+                // Redirect stdout
+                pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+                `);
+                await pyodide.runPythonAsync(code);
+                const stdout = pyodide.runPython('sys.stdout.getvalue()');
+                outputDiv.innerHTML = `<pre class="text-green-300 font-mono text-sm whitespace-pre-wrap">${escapeHtml(stdout)}</pre>`;
+            } catch (err) {
+                outputDiv.innerHTML = `<span class="text-red-400">Error: ${err}</span>`;
+            }
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        runBtn.addEventListener('click', loadPyodideAndRun);
+        // preload on idle
+        window.addEventListener('load', () => {
+            // lazy preload after 2s
+            setTimeout(() => {
+                if (!pyodideReady) {
+                    loadingDiv.classList.remove('hidden');
+                    loadPyodideAndRun(); // this will set ready and run once but user might click also
+                }
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
