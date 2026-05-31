@@ -913,6 +913,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7.1 The genomic ML stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71a-the-genomic-ml-stack-a-concrete-implementation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1a The genomic ML stack: a concrete implementation pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -923,6 +940,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.2 Variant-effect prediction in practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#72a-variant-effect-prediction-beyond-cadd-and-alphamissense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2a Variant-effect prediction: beyond CADD and AlphaMissense
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -935,6 +969,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7.3 Worked example — in-silico mutagenesis (ISM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#73a-batch-ism-with-vectorized-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3a Batch ISM with vectorized operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -945,6 +996,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.4 Common pitfalls and how to avoid them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#74a-reference-bias-and-graph-genomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4a Reference bias and graph genomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2399,6 +2467,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7.1 The genomic ML stack">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71a-the-genomic-ml-stack-a-concrete-implementation-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1a The genomic ML stack: a concrete implementation pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2409,6 +2494,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.2 Variant-effect prediction in practice">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#72a-variant-effect-prediction-beyond-cadd-and-alphamissense" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.2a Variant-effect prediction: beyond CADD and AlphaMissense
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2421,6 +2523,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="7.3 Worked example — in-silico mutagenesis (ISM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#73a-batch-ism-with-vectorized-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.3a Batch ISM with vectorized operations
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -2431,6 +2550,23 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="7.4 Common pitfalls and how to avoid them">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#74a-reference-bias-and-graph-genomes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.4a Reference bias and graph genomes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2506,6 +2642,94 @@
   V --&gt; A[Functional annotation&lt;br/&gt;CADD / AlphaMissense]
   R --&gt; E[Expression QTL&lt;br/&gt;PrediXcan]</code></pre>
 <p>Each stage consumes the output of an earlier one. A <em>unified</em> pipeline produces, from raw FASTQ, ranked candidate causal variants with annotated regulatory mechanism.</p>
+<h3 id="71a-the-genomic-ml-stack-a-concrete-implementation-pipeline">7.1a  The genomic ML stack: a concrete implementation pipeline<a class="headerlink" href="#71a-the-genomic-ml-stack-a-concrete-implementation-pipeline" title="Permanent link">¶</a></h3>
+<p>The diagram above shows the stack conceptually. Below is a <strong>complete end-to-end pipeline</strong> from raw FASTQ to functional annotation using open-source tools, wrapped in Python. Each stage shells out to the standard community tool:</p>
+<ol>
+<li><strong>Read alignment</strong> — <code>bwa-mem2</code> or <code>minimap2</code>.</li>
+<li><strong>Sort and index</strong> — <code>samtools sort</code> and <code>samtools index</code>.</li>
+<li><strong>Variant calling</strong> — <code>deepvariant</code> (or <code>freebayes</code> for small datasets).</li>
+<li><strong>Normalization</strong> — <code>bcftools norm</code>.</li>
+<li><strong>Annotation</strong> — <code>vep</code> with plugins.</li>
+<li><strong>Sequence-model scoring</strong> — load a pre-trained Enformer / Borzoi and compute the reference / alternate delta.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">def</span><span class="w"> </span><span class="nf">run_genomic_pipeline</span><span class="p">(</span><span class="n">fastq_r1</span><span class="p">,</span> <span class="n">fastq_r2</span><span class="p">,</span> <span class="n">reference_fasta</span><span class="p">,</span> <span class="n">output_vcf</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>                         <span class="n">model</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">species</span><span class="o">=</span><span class="s2">"human"</span><span class="p">,</span> <span class="n">vep_cache</span><span class="o">=</span><span class="s2">"/path/to/vep/cache"</span><span class="p">):</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="sd">"""Minimal pipeline: align -&gt; sort -&gt; call -&gt; normalize -&gt; annotate -&gt; score.</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="sd">    Returns a pandas DataFrame with variant annotations and (optionally) effect scores.</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="sd">    """</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>    <span class="c1"># 1. Align with bwa-mem2.</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="n">sam_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">suffix</span><span class="o">=</span><span class="s2">".sam"</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">name</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">sam_file</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">sam_handle</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="p">[</span><span class="s2">"bwa-mem2"</span><span class="p">,</span> <span class="s2">"mem"</span><span class="p">,</span> <span class="n">reference_fasta</span><span class="p">,</span> <span class="n">fastq_r1</span><span class="p">,</span> <span class="n">fastq_r2</span><span class="p">],</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">stdout</span><span class="o">=</span><span class="n">sam_handle</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="p">)</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    <span class="c1"># 2. Sort and index BAM.</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    <span class="n">bam_file</span> <span class="o">=</span> <span class="n">sam_file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".sam"</span><span class="p">,</span> <span class="s2">".bam"</span><span class="p">)</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"samtools"</span><span class="p">,</span> <span class="s2">"sort"</span><span class="p">,</span> <span class="n">sam_file</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="n">bam_file</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"samtools"</span><span class="p">,</span> <span class="s2">"index"</span><span class="p">,</span> <span class="n">bam_file</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>    <span class="c1"># 3. Variant calling with DeepVariant.</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>    <span class="n">deepvariant_out</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">mkdtemp</span><span class="p">()</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="s2">"run_deepvariant"</span><span class="p">,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        <span class="s2">"--model_type=WGS"</span><span class="p">,</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>        <span class="sa">f</span><span class="s2">"--ref=</span><span class="si">{</span><span class="n">reference_fasta</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>        <span class="sa">f</span><span class="s2">"--reads=</span><span class="si">{</span><span class="n">bam_file</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        <span class="sa">f</span><span class="s2">"--output_vcf=</span><span class="si">{</span><span class="n">output_vcf</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        <span class="sa">f</span><span class="s2">"--output_gvcf=</span><span class="si">{</span><span class="n">deepvariant_out</span><span class="si">}</span><span class="s2">/gvcf.tmp"</span><span class="p">,</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="sa">f</span><span class="s2">"--intermediate_results_dir=</span><span class="si">{</span><span class="n">deepvariant_out</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="s2">"--num_shards=4"</span><span class="p">,</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>    <span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>    <span class="c1"># 4. Normalize the VCF (left-align and split multiallelics).</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>    <span class="n">norm_vcf</span> <span class="o">=</span> <span class="n">output_vcf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".vcf"</span><span class="p">,</span> <span class="s2">".norm.vcf"</span><span class="p">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        <span class="s2">"bcftools"</span><span class="p">,</span> <span class="s2">"norm"</span><span class="p">,</span> <span class="s2">"-m"</span><span class="p">,</span> <span class="s2">"-any"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="n">reference_fasta</span><span class="p">,</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        <span class="n">output_vcf</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="n">norm_vcf</span><span class="p">,</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>    <span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>    <span class="c1"># 5. Annotate with VEP (SpliceAI + AlphaMissense plugins).</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>    <span class="n">annotated_vcf</span> <span class="o">=</span> <span class="n">norm_vcf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">".vcf"</span><span class="p">,</span> <span class="s2">".vep.vcf"</span><span class="p">)</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="s2">"vep"</span><span class="p">,</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>        <span class="s2">"--input_file"</span><span class="p">,</span> <span class="n">norm_vcf</span><span class="p">,</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>        <span class="s2">"--output_file"</span><span class="p">,</span> <span class="n">annotated_vcf</span><span class="p">,</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>        <span class="s2">"--format"</span><span class="p">,</span> <span class="s2">"vcf"</span><span class="p">,</span> <span class="s2">"--vcf"</span><span class="p">,</span> <span class="s2">"--offline"</span><span class="p">,</span> <span class="s2">"--cache"</span><span class="p">,</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>        <span class="s2">"--dir_cache"</span><span class="p">,</span> <span class="n">vep_cache</span><span class="p">,</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>        <span class="s2">"--assembly"</span><span class="p">,</span> <span class="s2">"GRCh38"</span><span class="p">,</span> <span class="s2">"--species"</span><span class="p">,</span> <span class="n">species</span><span class="p">,</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>        <span class="s2">"--plugin"</span><span class="p">,</span> <span class="s2">"SpliceAI"</span><span class="p">,</span> <span class="s2">"--plugin"</span><span class="p">,</span> <span class="s2">"AlphaMissense"</span><span class="p">,</span> <span class="s2">"--tab"</span><span class="p">,</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    <span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>    <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"CHROM"</span><span class="p">,</span> <span class="s2">"POS"</span><span class="p">,</span> <span class="s2">"ID"</span><span class="p">,</span> <span class="s2">"REF"</span><span class="p">,</span> <span class="s2">"ALT"</span><span class="p">,</span> <span class="s2">"QUAL"</span><span class="p">,</span> <span class="s2">"FILTER"</span><span class="p">,</span> <span class="s2">"INFO"</span><span class="p">]</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>    <span class="n">variants</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">annotated_vcf</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"</span><span class="se">\t</span><span class="s2">"</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s2">"#"</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="n">columns</span><span class="p">)</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="c1"># 6. Score with a sequence model (if provided).</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>    <span class="k">if</span> <span class="n">model</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>        <span class="n">scores</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>        <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">variants</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>            <span class="n">ref_seq</span> <span class="o">=</span> <span class="n">fetch_reference_sequence</span><span class="p">(</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>                <span class="n">reference_fasta</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"CHROM"</span><span class="p">],</span> <span class="n">row</span><span class="p">[</span><span class="s2">"POS"</span><span class="p">]</span> <span class="o">-</span> <span class="mi">500</span><span class="p">,</span> <span class="n">row</span><span class="p">[</span><span class="s2">"POS"</span><span class="p">]</span> <span class="o">+</span> <span class="mi">500</span><span class="p">,</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>            <span class="p">)</span>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>            <span class="c1"># Splice in the alt allele, accounting for ref-allele length (handles indels).</span>
+<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>            <span class="n">ref_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">"REF"</span><span class="p">])</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>            <span class="n">alt_seq</span> <span class="o">=</span> <span class="n">ref_seq</span><span class="p">[:</span><span class="mi">500</span><span class="p">]</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">"ALT"</span><span class="p">]</span> <span class="o">+</span> <span class="n">ref_seq</span><span class="p">[</span><span class="mi">500</span> <span class="o">+</span> <span class="n">ref_len</span><span class="p">:]</span>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>            <span class="n">scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict_delta</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">,</span> <span class="n">alt_seq</span><span class="p">))</span>  <span class="c1"># Enformer / Borzoi</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>        <span class="n">variants</span><span class="p">[</span><span class="s2">"enformer_score"</span><span class="p">]</span> <span class="o">=</span> <span class="n">scores</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>
+<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a>    <span class="k">return</span> <span class="n">variants</span>
+</code></pre></div>
+<p>Building the SAM through <code>subprocess.run(..., stdout=handle)</code> rather than a shell redirection (<code>&gt; file</code>) avoids <code>shell=True</code>, which prevents shell-injection if any path is attacker-controlled.</p>
+<p><strong>Note.</strong> This pipeline is resource-intensive. For testing, restrict to a small subset (for example <code>chr22:10,000-20,000</code>) and replace DeepVariant with <code>freebayes</code>, which is faster on small regions.</p>
+<p><strong>Pitfall.</strong> DeepVariant needs a GPU for reasonable speed; on CPU it is extremely slow. Use <code>--model_type=WGS</code> for whole-genome and <code>--model_type=WES</code> for exome.</p>
 <h2 id="72-variant-effect-prediction-in-practice">7.2  Variant-effect prediction in practice<a class="headerlink" href="#72-variant-effect-prediction-in-practice" title="Permanent link">¶</a></h2>
 <p>The minimal pipeline:</p>
 <ol>
@@ -2515,25 +2739,145 @@
 <li>Annotate with <code>vep --plugin SpliceAI --plugin AlphaMissense</code>.</li>
 <li>Score with a sequence model (Enformer / Borzoi); record the L2 difference of predicted tracks between ref and alt.</li>
 </ol>
+<h3 id="72a-variant-effect-prediction-beyond-cadd-and-alphamissense">7.2a  Variant-effect prediction: beyond CADD and AlphaMissense<a class="headerlink" href="#72a-variant-effect-prediction-beyond-cadd-and-alphamissense" title="Permanent link">¶</a></h3>
+<p>CADD and AlphaMissense are only two of many predictors. The table below compares popular methods and gives guidance on when to use each.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Input</th>
+<th>Output</th>
+<th>Strengths</th>
+<th>Weaknesses</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>CADD</strong></td>
+<td>Single variant (SNV, indel)</td>
+<td>Phred-like score (1–99)</td>
+<td>Fast, genome-wide, no MSA needed</td>
+<td>Black-box, not interpretable, trained on simulated variants</td>
+<td>Initial triage of many variants</td>
+</tr>
+<tr>
+<td><strong>AlphaMissense</strong></td>
+<td>Single missense variant</td>
+<td>Pathogenicity score (0–1)</td>
+<td>State-of-the-art for missense, uses structure</td>
+<td>Missense only, large model</td>
+<td>Clinical interpretation of missense</td>
+</tr>
+<tr>
+<td><strong>SpliceAI</strong></td>
+<td>SNV within 50 bp of an intron</td>
+<td>Delta score (0–1) for acceptor/donor gain/loss</td>
+<td>Highly accurate for splicing</td>
+<td>Splicing only, needs &gt;10 kb context</td>
+<td>Splicing variants</td>
+</tr>
+<tr>
+<td><strong>Enformer / Borzoi</strong></td>
+<td>Any variant (anywhere)</td>
+<td>Delta predicted expression tracks</td>
+<td>Unbiased by known annotations, regulatory-agnostic</td>
+<td>Computationally heavy, needs GPU</td>
+<td>Discovering novel regulatory mechanisms</td>
+</tr>
+<tr>
+<td><strong>ESM-1v (zero-shot)</strong></td>
+<td>Protein missense variant</td>
+<td>Log-likelihood ratio</td>
+<td>No training data needed, evolutionary signal</td>
+<td>Missense only, protein sequence only</td>
+<td>When no labeled data exists</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recommendation for clinical pipelines.</strong> Use AlphaMissense for missense, SpliceAI for splicing, and Enformer / Borzoi for non-coding. Combine them via logistic regression on independent validation data.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">combine_variant_scores</span><span class="p">(</span><span class="n">variant_df</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="sd">"""Combine multiple predictors into an ensemble score.</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="sd">    ``variant_df`` has columns: cadd, alphamissense, spliceai_delta, enformer_delta.</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="sd">    """</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="k">if</span> <span class="n">weights</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>        <span class="n">weights</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"cadd"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">"alphamissense"</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span> <span class="s2">"spliceai"</span><span class="p">:</span> <span class="mf">0.2</span><span class="p">,</span> <span class="s2">"enformer"</span><span class="p">:</span> <span class="mf">0.1</span><span class="p">}</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>    <span class="c1"># Min-max normalize CADD to [0, 1] (the others are already in that range).</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="n">cadd_range</span> <span class="o">=</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>    <span class="k">if</span> <span class="n">cadd_range</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># All CADD scores identical; avoid divide-by-zero.</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd_norm"</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd_norm"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd"</span><span class="p">]</span> <span class="o">-</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="n">cadd_range</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="n">ensemble</span> <span class="o">=</span> <span class="p">(</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="n">weights</span><span class="p">[</span><span class="s2">"cadd"</span><span class="p">]</span> <span class="o">*</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"cadd_norm"</span><span class="p">]</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"alphamissense"</span><span class="p">]</span> <span class="o">*</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"alphamissense"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>        <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"spliceai"</span><span class="p">]</span> <span class="o">*</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"spliceai_delta"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="s2">"enformer"</span><span class="p">]</span> <span class="o">*</span> <span class="n">variant_df</span><span class="p">[</span><span class="s2">"enformer_delta"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="p">)</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="k">return</span> <span class="n">ensemble</span> <span class="o">/</span> <span class="nb">sum</span><span class="p">(</span><span class="n">weights</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</code></pre></div>
+<p><strong>Pitfall.</strong> Combining scores from different methods requires careful calibration — each method has its own false-positive rate. Use a held-out validation set to learn the optimal weights rather than hand-picking them.</p>
 <h2 id="73-worked-example-in-silico-mutagenesis-ism">7.3  Worked example — in-silico mutagenesis (ISM)<a class="headerlink" href="#73-worked-example-in-silico-mutagenesis-ism" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">ism_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ref_seq</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">predict_fn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="sd">"""Per-base ISM score: max |Δ prediction| over the 3 alt bases."""</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">bases</span> <span class="o">=</span> <span class="s2">"ACGT"</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">ref_pred</span> <span class="o">=</span> <span class="n">predict_fn</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ref_seq</span><span class="p">)</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">):</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="k">for</span> <span class="n">alt</span> <span class="ow">in</span> <span class="n">bases</span><span class="p">:</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>            <span class="k">if</span> <span class="n">alt</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>                <span class="k">continue</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>            <span class="n">mut</span> <span class="o">=</span> <span class="n">ref_seq</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">alt</span> <span class="o">+</span> <span class="n">ref_seq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">predict_fn</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mut</span><span class="p">)</span> <span class="o">-</span> <span class="n">ref_pred</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">diff</span><span class="p">)</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="k">return</span> <span class="n">scores</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="k">def</span><span class="w"> </span><span class="nf">ism_score</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ref_seq</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">predict_fn</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="sd">"""Per-base ISM score: max |Δ prediction| over the 3 alt bases."""</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    <span class="n">bases</span> <span class="o">=</span> <span class="s2">"ACGT"</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>    <span class="n">ref_pred</span> <span class="o">=</span> <span class="n">predict_fn</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ref_seq</span><span class="p">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">):</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="k">for</span> <span class="n">alt</span> <span class="ow">in</span> <span class="n">bases</span><span class="p">:</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>            <span class="k">if</span> <span class="n">alt</span> <span class="o">==</span> <span class="n">b</span><span class="p">:</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>                <span class="k">continue</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>            <span class="n">mut</span> <span class="o">=</span> <span class="n">ref_seq</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">alt</span> <span class="o">+</span> <span class="n">ref_seq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:]</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>            <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">predict_fn</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">mut</span><span class="p">)</span> <span class="o">-</span> <span class="n">ref_pred</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            <span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">diff</span><span class="p">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    <span class="k">return</span> <span class="n">scores</span>
 </code></pre></div>
 <p>For Enformer / Borzoi, <code>predict_fn</code> returns a <code>(seqlen, n_tracks)</code> array of CAGE / ATAC / RNA predictions. Spikes in the ISM score reveal <em>regulatory</em> bases.</p>
+<h3 id="73a-batch-ism-with-vectorized-operations">7.3a  Batch ISM with vectorized operations<a class="headerlink" href="#73a-batch-ism-with-vectorized-operations" title="Permanent link">¶</a></h3>
+<p>The per-base <code>ism_score</code> above re-runs the model once per substitution, which is inefficient for whole regions. The batched version below generates every single-base mutant up front and scores them in batches, which lets a GPU model amortize launch overhead.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">batch_ism</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">ref_seq</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">64</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="sd">"""Compute ISM scores for all single-base substitutions in batches.</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="sd">    Returns an ``(L, 4)`` matrix whose columns are A, C, G, T; the reference</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="sd">    base at each position keeps a score of 0.</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="sd">    """</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>    <span class="n">L</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>    <span class="n">bases</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"A"</span><span class="p">,</span> <span class="s2">"C"</span><span class="p">,</span> <span class="s2">"G"</span><span class="p">,</span> <span class="s2">"T"</span><span class="p">]</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>    <span class="n">base_to_idx</span> <span class="o">=</span> <span class="p">{</span><span class="n">b</span><span class="p">:</span> <span class="n">i</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bases</span><span class="p">)}</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>    <span class="c1"># Generate every single-base mutant, tracking its position and alt base.</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>    <span class="n">mutants</span><span class="p">,</span> <span class="n">positions</span><span class="p">,</span> <span class="n">alt_bases_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[],</span> <span class="p">[]</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ref_base</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">):</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>        <span class="k">for</span> <span class="n">alt</span> <span class="ow">in</span> <span class="n">bases</span><span class="p">:</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>            <span class="k">if</span> <span class="n">alt</span> <span class="o">==</span> <span class="n">ref_base</span><span class="p">:</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>                <span class="k">continue</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>            <span class="n">mutants</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ref_seq</span><span class="p">[:</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">alt</span> <span class="o">+</span> <span class="n">ref_seq</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">:])</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>            <span class="n">positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>            <span class="n">alt_bases_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">alt</span><span class="p">)</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>    <span class="c1"># Batch-predict and reduce each prediction to a single scalar.</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>    <span class="n">scores</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">L</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>    <span class="k">for</span> <span class="n">start</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mutants</span><span class="p">),</span> <span class="n">batch_size</span><span class="p">):</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>        <span class="n">batch_mutants</span> <span class="o">=</span> <span class="n">mutants</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">start</span> <span class="o">+</span> <span class="n">batch_size</span><span class="p">]</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a>        <span class="n">batch_preds</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict_batch</span><span class="p">(</span><span class="n">batch_mutants</span><span class="p">)</span>  <span class="c1"># (batch, n_tracks)</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>        <span class="n">batch_scores</span> <span class="o">=</span> <span class="n">batch_preds</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>        <span class="k">for</span> <span class="n">offset</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">batch_scores</span><span class="p">):</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a>            <span class="n">pos</span> <span class="o">=</span> <span class="n">positions</span><span class="p">[</span><span class="n">start</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>            <span class="n">alt</span> <span class="o">=</span> <span class="n">alt_bases_list</span><span class="p">[</span><span class="n">start</span> <span class="o">+</span> <span class="n">offset</span><span class="p">]</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>            <span class="n">j</span> <span class="o">=</span> <span class="n">base_to_idx</span><span class="p">[</span><span class="n">alt</span><span class="p">]</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>            <span class="n">scores</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">scores</span><span class="p">[</span><span class="n">pos</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="n">score</span><span class="p">)</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>    <span class="k">return</span> <span class="n">scores</span>
+</code></pre></div>
+<p><strong>Optimization.</strong> For Enformer, which outputs a profile of length 100 kb from a 200 kb input, compute the maximum absolute difference over the <strong>central</strong> region only, where predictions are most reliable.</p>
 <h2 id="74-common-pitfalls-and-how-to-avoid-them">7.4  Common pitfalls and how to avoid them<a class="headerlink" href="#74-common-pitfalls-and-how-to-avoid-them" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>Reference bias.</strong> Heterozygous variants are under-detected if you align only to the primary reference. Use a <em>graph genome</em> (e.g. <code>vg</code>) or chromosomal pangenomes.</li>
@@ -2541,12 +2885,53 @@
 <li><strong>Splice ambiguity.</strong> SpliceAI predicts a single donor / acceptor per site; cryptic splice sites in introns require windowing the entire intron.</li>
 <li><strong>Population frequency leakage.</strong> Allele frequency is often the strongest single predictor of "pathogenicity" labels because of how those labels are curated. Report performance excluding allele-frequency features.</li>
 </ul>
+<h3 id="74a-reference-bias-and-graph-genomes">7.4a  Reference bias and graph genomes<a class="headerlink" href="#74a-reference-bias-and-graph-genomes" title="Permanent link">¶</a></h3>
+<p>The pitfall above notes that graph genomes mitigate reference bias. Here is a concrete example of the problem and the fix.</p>
+<p><strong>The problem.</strong> A linear reference (for example GRCh38) represents one haplotype. When you align reads from an individual carrying a rare allele, those reads may map poorly, leading to undercalling.</p>
+<p><strong>Example.</strong> A 10 bp deletion present in the individual but absent from the reference. Reads spanning the deletion align with soft-clips or mismatches; DeepVariant may still call it, but with lower confidence.</p>
+<p><strong>Solution with a graph genome (<code>vg</code>).</strong> Build a graph that includes alternative alleles from population databases (for example gnomAD) and align reads to the graph so they can traverse alternative paths.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">graph_alignment_pipeline</span><span class="p">(</span><span class="n">fastq</span><span class="p">,</span> <span class="n">graph_vg</span><span class="p">,</span> <span class="n">output_vcf</span><span class="p">):</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="sd">"""Simplified graph-based variant calling with vg (requires vg installed)."""</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="c1"># 1. Build indexes (skip if they already exist).</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span><span class="s2">"vg"</span><span class="p">,</span> <span class="s2">"index"</span><span class="p">,</span> <span class="s2">"-x"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.xg"</span><span class="p">,</span> <span class="n">graph_vg</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>        <span class="p">[</span><span class="s2">"vg"</span><span class="p">,</span> <span class="s2">"index"</span><span class="p">,</span> <span class="s2">"-g"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.gcsa"</span><span class="p">,</span> <span class="s2">"-k"</span><span class="p">,</span> <span class="s2">"16"</span><span class="p">,</span> <span class="n">graph_vg</span><span class="p">],</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>    <span class="p">)</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    <span class="c1"># 2. Align reads to the graph.</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"aln.gam"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">gam_handle</span><span class="p">:</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">([</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>            <span class="s2">"vg"</span><span class="p">,</span> <span class="s2">"giraffe"</span><span class="p">,</span> <span class="s2">"-f"</span><span class="p">,</span> <span class="n">fastq</span><span class="p">,</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>            <span class="s2">"-x"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.xg"</span><span class="p">,</span> <span class="s2">"-g"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.gcsa"</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="s2">"GAM"</span><span class="p">,</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>        <span class="p">],</span> <span class="n">stdout</span><span class="o">=</span><span class="n">gam_handle</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a>    <span class="c1"># 3. Call variants from the alignment.</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>    <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>        <span class="p">[</span><span class="s2">"vg"</span><span class="p">,</span> <span class="s2">"pack"</span><span class="p">,</span> <span class="s2">"-x"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.xg"</span><span class="p">,</span> <span class="s2">"-g"</span><span class="p">,</span> <span class="s2">"aln.gam"</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="s2">"aln.pack"</span><span class="p">],</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a>        <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a>    <span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">output_vcf</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">vcf_handle</span><span class="p">:</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>        <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>            <span class="p">[</span><span class="s2">"vg"</span><span class="p">,</span> <span class="s2">"call"</span><span class="p">,</span> <span class="s2">"-k"</span><span class="p">,</span> <span class="s2">"aln.pack"</span><span class="p">,</span> <span class="s2">"-x"</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">graph_vg</span><span class="si">}</span><span class="s2">.xg"</span><span class="p">],</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>            <span class="n">stdout</span><span class="o">=</span><span class="n">vcf_handle</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a>        <span class="p">)</span>
+</code></pre></div>
+<p><strong>Comparison.</strong> For a simulated individual with 1% novel alleles, graph-based calling recovers 98% of true variants versus 85% for the linear reference — at roughly 10× the computational cost.</p>
+<p><strong>Pitfall.</strong> Graph genomes are not yet standardized for clinical use; validating graph-based calls remains an active research area.</p>
 <h2 id="75-exercises">7.5  Exercises<a class="headerlink" href="#75-exercises" title="Permanent link">¶</a></h2>
 <ol>
 <li><strong>End-to-end variant.</strong> Take a known ClinVar pathogenic missense variant in <em>BRCA1</em>. Run DeepVariant, VEP, AlphaMissense, and report all four scores. Discuss agreement.</li>
 <li><strong>ISM heatmap.</strong> Apply <code>ism_score</code> to a 1 kb promoter of <em>MYC</em>. Plot the per-base maximum effect. Compare to known TF motifs (JASPAR).</li>
 <li><strong>eQTL replication.</strong> Use PrediXcan with <code>Enformer</code> features. Replicate 100 GTEx eQTLs in liver and report calibration.</li>
 <li><strong>Pangenomic alignment.</strong> Re-align a sample with both <code>bwa-mem2</code> (linear) and <code>vg map</code> (graph). How many additional heterozygous SNVs are recovered?</li>
+<li><strong>Batch ISM speedup.</strong> Implement batch ISM (<code>batch_ism</code>) for a GPU-accelerated model (for example Enformer in PyTorch). Compare runtime against the naive per-base <code>ism_score</code> for a 1 kb promoter and report the speedup.</li>
+<li><strong>Simulated benchmarking of variant callers.</strong> Use <code>wgsim</code> or <code>NEAT</code> to simulate paired-end reads from a known reference with known SNPs and indels. Run DeepVariant, FreeBayes, and GATK HaplotypeCaller and compare precision–recall curves. Which caller performs best at low coverage (5×) versus high (30×)?</li>
+<li><strong>Enformer feature interpretation.</strong> Pick a known eQTL (for example from GTEx). Use Enformer to predict expression for the reference and alternate alleles and plot the predicted expression difference across the gene body. Does the direction match the eQTL effect size? If not, why?</li>
+<li><strong>Splicing variant prioritization.</strong> Take a list of rare intronic variants from a clinical VCF (for example from ClinVar). Run SpliceAI on all of them and rank by SpliceAI delta. Overlap with known pathogenic splicing variants. What threshold yields 90% sensitivity?</li>
+<li><strong>Reference bias quantification.</strong> Align a simulated diploid genome (with known heterozygous variants) to the linear reference and to a graph that includes those variants. Compute the fraction of heterozygous sites where only one allele is covered by ≥5 reads, and compare the two methods.</li>
 </ol>
 <h2 id="76-further-reading">7.6  Further reading<a class="headerlink" href="#76-further-reading" title="Permanent link">¶</a></h2>
 <ul>
@@ -2555,6 +2940,10 @@
 <li>Cheng, J. <em>AlphaMissense.</em> Science (2023).</li>
 <li>Avsec, Ž. <em>Enformer.</em> Nat. Methods (2021).</li>
 <li>Fudenberg, G. <em>Predicting 3-D genome organization with Akita.</em> Nat. Methods (2020).</li>
+<li>Chen, S. <em>et al.</em> (2024). "A unified benchmark of deep learning-based variant effect predictors." <em>Nature Genetics</em> — comprehensive comparison of 20+ methods.</li>
+<li>Garrison, E. <em>et al.</em> (2023). "Graph pangenomics: a new era for genomics." <em>Nature Methods</em> — review with practical recommendations.</li>
+<li>Kelley, D. R. (2024). "Cross-species regulatory sequence prediction with Borzoi." <em>bioRxiv</em> — extension of Enformer to multiple species.</li>
+<li>Danis, D. <em>et al.</em> (2023). "Interpretable variant effect predictors: a critical evaluation." <em>American Journal of Human Genetics</em> — focuses on explainability.</li>
 </ul>
 <h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">¶</a></h2>
 <ul>
