@@ -262,6 +262,7 @@ In the Vicsek model, each individual's velocity aligns with its neighbors within
 **Neighborhood encoding:** For each individual i at time t, build a feature vector that is invariant to translation and rotation — the relative positions and velocities of neighbors expressed in a local frame aligned with `v_i`.
 
 ```python
+import numpy as np
 import torch
 import torch.nn as nn
 
@@ -361,7 +362,6 @@ The points above flag welfare, surveillance, and wildlife disturbance. Below are
 ## 12.8  Further reading
 
 - Mathis, A. *DeepLabCut.* Nat Neurosci (2018).
-- Pereira, T. *SLEAP.* Nat. Methods (2022).
 - Wiltschko, A. *Mapping sub-second structure in mouse behavior.* Neuron (2015) — MoSeq.
 - Tuia, D. *Perspectives in machine learning for wildlife conservation.* Nat Commun (2022).
 - Pereira, T. D. et al. *SLEAP: A deep learning system for multi-animal pose tracking.* Nat. Methods (2022) — includes a benchmark against DLC.
