@@ -390,10 +390,10 @@ def sampling_bias_correlation(gbif_density, human_pop_density):
 - Tuia, D. *Perspectives in machine learning for wildlife conservation.* Nat Commun (2022).
 - Dakos, V. *Methods for detecting early warnings of critical transitions.* PLOS One (2012).
 - Beery, S. *The iWildCam challenges.* (2018–2023).
-- Valavi, R. *et al.* *Predictive performance of presence-only species distribution models: a benchmark study with reproducible code.* Ecological Monographs (2022).
-- Beery, S. *et al.* *The iWildCam 2020 challenge: a vision for monitoring wildlife.* arXiv (2020).
-- Dakos, V. *et al.* *Early warning signals of ecological tipping points.* Nature Ecology & Evolution (2015).
-- Hanson, J. O. *et al.* *prioritizr: a R package for systematic conservation prioritization.* Journal of Open Source Software (2022).
+- Valavi, R. *Predictive performance of presence-only species distribution models: a benchmark study with reproducible code.* Ecological Monographs (2022).
+- Beery, S. *The iWildCam 2020 challenge: a vision for monitoring wildlife.* arXiv (2020).
+- Dakos, V. *Early warning signals of ecological tipping points.* Nature Ecology & Evolution (2015).
+- Hanson, J. O. *prioritizr: a R package for systematic conservation prioritization.* Journal of Open Source Software (2022).
 
 ## See also
 
