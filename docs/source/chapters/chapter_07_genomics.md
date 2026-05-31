@@ -101,7 +101,9 @@ def run_genomic_pipeline(fastq_r1, fastq_r2, reference_fasta, output_vcf,
             ref_seq = fetch_reference_sequence(
                 reference_fasta, row["CHROM"], row["POS"] - 500, row["POS"] + 500,
             )
-            alt_seq = ref_seq[:500] + row["ALT"] + ref_seq[501:]
+            # Splice in the alt allele, accounting for ref-allele length (handles indels).
+            ref_len = len(row["REF"])
+            alt_seq = ref_seq[:500] + row["ALT"] + ref_seq[500 + ref_len:]
             scores.append(model.predict_delta(ref_seq, alt_seq))  # Enformer / Borzoi
         variants["enformer_score"] = scores
 
@@ -149,7 +151,10 @@ def combine_variant_scores(variant_df, weights=None):
 
     # Min-max normalize CADD to [0, 1] (the others are already in that range).
     cadd_range = variant_df["cadd"].max() - variant_df["cadd"].min()
-    variant_df["cadd_norm"] = (variant_df["cadd"] - variant_df["cadd"].min()) / cadd_range
+    if cadd_range == 0:  # All CADD scores identical; avoid divide-by-zero.
+        variant_df["cadd_norm"] = 0.0
+    else:
+        variant_df["cadd_norm"] = (variant_df["cadd"] - variant_df["cadd"].min()) / cadd_range
 
     ensemble = (
         weights["cadd"] * variant_df["cadd_norm"]
