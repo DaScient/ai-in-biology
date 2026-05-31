@@ -186,6 +186,8 @@ model = PrithviSegmentationHead(backbone, num_classes=2)
 optimizer = torch.optim.Adam(model.parameters(), lr=1e-4)
 criterion = nn.CrossEntropyLoss()
 
+# Build the dataset from your labeled tiles (paths to .npy arrays)
+train_dataset = BurnedAreaDataset(train_tile_paths, train_label_paths)
 dataloader = DataLoader(train_dataset, batch_size=8, shuffle=True)
 for epoch in range(20):
     model.train()
@@ -252,7 +254,9 @@ def quantile_mapping(gcm_historical, obs_historical, gcm_future, n_quantiles=100
     quantile_future = interp_to_quantile(gcm_future)
     return interp_to_obs(quantile_future)
 
-# Example: correct temperature for a single grid cell
+# Example: correct temperature for a single grid cell.
+# Toy data (np.random) stands in for real series; in practice use actual GCM
+# output (e.g., CMIP6) and an observational product (e.g., ERA5, CHIRPS).
 gcm_hist = np.random.normal(15, 2.0, 1000)    # GCM historical (mean 15 C)
 obs_hist = np.random.normal(14, 1.5, 1000)    # Observed (mean 14 C)
 gcm_future = np.random.normal(17, 2.5, 1000)  # Future GCM (mean 17 C)
@@ -260,7 +264,8 @@ corrected_future = quantile_mapping(gcm_hist, obs_hist, gcm_future)
 
 print(f"GCM future mean: {gcm_future.mean():.2f} C")
 print(f"Corrected future mean: {corrected_future.mean():.2f} C")
-# Roughly 16 C: the future warming minus the observed cold bias.
+# Roughly 16 C: the future GCM mean (17 C) minus the GCM warm bias (~1 C),
+# since the GCM runs ~1 C warmer than observations over the historical period.
 ```
 
 **Visualization.** Plot Q-Q plots before and after correction to confirm the distributions align.
