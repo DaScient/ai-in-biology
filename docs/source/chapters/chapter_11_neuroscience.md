@@ -205,7 +205,7 @@ from scipy.linalg import orthogonal_procrustes
 R, _ = orthogonal_procrustes(emb_A.T, emb_B.T)
 emb_B_aligned = (R @ emb_B.T).T
 # Now compare trajectories
-alignment_score = np.mean(np.corrcoef(emb_A.flatten(), emb_B_aligned.flatten()))
+alignment_score = np.corrcoef(emb_A.flatten(), emb_B_aligned.flatten())[0, 1]
 ```
 
 **For true hyperscanning with CEBRA:** use a `MultiCEBRA`-style extension (not yet in the standard library) that accepts two input modalities and a contrastive objective maximizing mutual information between simultaneous samples.
@@ -235,17 +235,19 @@ import cloudvolume as cv
 import neuroglancer
 
 # FlyWire hemibrain v1.2 (~20 TB dataset)
-volume = cv.CloudVolume('precomputed://gs://flywire_v1_2/segmentation')
+seg = cv.CloudVolume('precomputed://gs://flywire_v1_2/segmentation')
+img = cv.CloudVolume('precomputed://gs://flywire_v1_2/image')
 # Download a small subvolume (256³ voxels) around a synapse of interest
 x, y, z = 10000, 15000, 2000   # coordinates in voxel space
 size = 256
-subvol = volume[x:x+size, y:y+size, z:z+size]  # (size, size, size) array of segment IDs
+subvol_seg = seg[x:x+size, y:y+size, z:z+size]  # segment IDs (for visualization)
+subvol_img = img[x:x+size, y:y+size, z:z+size]  # raw EM intensities (for the U-Net)
 
 # Visualize in neuroglancer (interactive)
 viewer = neuroglancer.Viewer()
 with viewer.txn() as s:
-    s.layers['segmentation'] = neuroglancer.SegmentationLayer(source=volume.get_neuroglancer_link())
-    s.layers['image'] = neuroglancer.ImageLayer(source=volume.get_image_layer_link())
+    s.layers['segmentation'] = neuroglancer.SegmentationLayer(source=seg.get_neuroglancer_link())
+    s.layers['image'] = neuroglancer.ImageLayer(source=img.get_neuroglancer_link())
 print(viewer)
 ```
 
@@ -273,8 +275,8 @@ class Simple3DUNet(nn.Module):
         d1 = self.dec1(d2) + e1
         return self.out(d1)
 
-# Load subvolume (ensure normalization to [0, 1])
-input_tensor = torch.tensor(subvol.astype(np.float32)).unsqueeze(0).unsqueeze(0)  # (1,1,256,256,256)
+# Load subvolume of raw EM image data (ensure normalization to [0, 1])
+input_tensor = torch.tensor(subvol_img.astype(np.float32) / 255.0).unsqueeze(0).unsqueeze(0)  # (1,1,256,256,256)
 model = Simple3DUNet()
 affinities = model(input_tensor)  # (1,3,256,256,256)
 ```
