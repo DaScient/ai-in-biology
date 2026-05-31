@@ -60,7 +60,6 @@ def info_nce_hard(h1, h2, tau=0.1, hard_frac=0.5):
     h1 = F.normalize(h1, dim=-1)
     h2 = F.normalize(h2, dim=-1)
     logits = h1 @ h2.T / tau   # (B, B)
-    labels = torch.arange(len(h1), device=h1.device)
 
     # Compute weights: for each row, higher weight for negatives with high similarity
     with torch.no_grad():
@@ -126,6 +125,7 @@ def compute_alignment_uniformity(z, positive_pairs):
     align = align / len(positive_pairs)
 
     # Uniformity: average over all pairs (or a subsample)
+    # For N > 1e4, subsample rows/pairs first — this matrix is O(N^2) in time and memory.
     all_pairs = torch.cdist(z_norm, z_norm, p=2).pow(2)  # squared distances
     mask = ~torch.eye(len(z_norm), dtype=bool, device=z.device)  # exclude diagonal
     uniform = torch.log((torch.exp(-2 * all_pairs[mask])).mean())
