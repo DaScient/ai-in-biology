@@ -8,8 +8,8 @@ import remarkAlert from 'remark-github-alerts';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://dascient.github.io/ai-in-biology',
-  base: '/ai-in-biology',
+  site: 'https://dascient.github.io',
+  base: '/ai-in-biology/app',
 
   integrations: [
     preact({ compat: true }),

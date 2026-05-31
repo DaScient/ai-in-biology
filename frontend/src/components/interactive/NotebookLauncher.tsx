@@ -52,7 +52,7 @@ export default function NotebookLauncher({ notebookPath, title }: NotebookLaunch
         </div>
         <div class="notebook-actions">
           <a
-            href={`https://colab.research.google.com/github/DaScient/ai-in-biological-sciences/blob/main/notebooks/${notebookPath}`}
+            href={`https://colab.research.google.com/github/DaScient/ai-in-biology/blob/main/notebooks/${notebookPath}`}
             target="_blank"
             rel="noopener noreferrer"
             class="colab-link"
@@ -60,7 +60,7 @@ export default function NotebookLauncher({ notebookPath, title }: NotebookLaunch
             <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" />
           </a>
           <a
-            href={`https://mybinder.org/v2/gh/DaScient/ai-in-biological-sciences/main?filepath=notebooks%2F${notebookPath}`}
+            href={`https://mybinder.org/v2/gh/DaScient/ai-in-biology/main?filepath=notebooks%2F${notebookPath}`}
             target="_blank"
             rel="noopener noreferrer"
             class="binder-link"
