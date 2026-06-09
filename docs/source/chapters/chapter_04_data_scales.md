@@ -321,3 +321,7 @@ intervals rather than point estimates.
 - [Chapter 5 — Representation Learning](chapter_05_embeddings.md)
 - [Chapter 9 — Single-Cell Intelligence](chapter_09_single_cell.md)
 - [Examples — Python](../examples/python.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

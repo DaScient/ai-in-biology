@@ -306,3 +306,7 @@ The pointers above are deliberately brief. For a biologist who has completed thi
 - [Chapter 1 — Biology as an Information Science](chapter_01_bioinfo_basics.md)
 - [Chapter 22 — Co-Evolution of AI & Life](chapter_22_coevolution.md)
 - [Chapter 23 — Limits & Open Questions](chapter_23_limits.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

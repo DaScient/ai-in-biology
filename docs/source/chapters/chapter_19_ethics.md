@@ -301,3 +301,7 @@ def safe_generate(prompt, model):
 - [Chapter 16 — Medicine & Healthcare](chapter_16_medicine.md)
 - [Chapter 17 — Biotechnology & Bioengineering](chapter_17_biotech.md)
 - [Chapter 20 — Policy & Regulation](chapter_20_policy.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

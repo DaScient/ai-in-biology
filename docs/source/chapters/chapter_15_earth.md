@@ -389,3 +389,7 @@ Many published Earth-system "attributions" are correlational and may be overturn
 - [Chapter 14 — Ecology & Conservation](chapter_14_ecology.md)
 - [Ecology API](../api/ecology.md)
 - [Chapter 22 — Co-evolution of AI & Life](chapter_22_coevolution.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

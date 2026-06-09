@@ -374,3 +374,7 @@ The points above flag welfare, surveillance, and wildlife disturbance. Below are
 - [Chapter 11 — Neuroscience](chapter_11_neuroscience.md)
 - [Chapter 14 — Ecology & Conservation](chapter_14_ecology.md)
 - [Chapter 19 — Ethics of AI in Biology](chapter_19_ethics.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

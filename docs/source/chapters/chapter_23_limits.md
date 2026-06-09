@@ -361,3 +361,7 @@ def calibration_by_distance(model, X_train, X_test, y_test, distance_metric='mah
 - [Chapter 6 — Modeling Living Systems](chapter_06_modeling.md)
 - [Chapter 18 — Experimental Design in the AI Era](chapter_18_experiments.md)
 - [Chapter 24 — A New Biology](chapter_24_new_biology.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

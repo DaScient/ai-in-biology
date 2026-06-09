@@ -400,3 +400,7 @@ def sampling_bias_correlation(gbif_density, human_pop_density):
 - [Chapter 12 — Behavior & Social Systems](chapter_12_ethology.md)
 - [Chapter 15 — Earth Systems & Planetary Biology](chapter_15_earth.md)
 - [Ecology API](../api/ecology.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

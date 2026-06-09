@@ -288,3 +288,7 @@ A linear probe is a cheap diagnostic, but sometimes it is too weak. Use this dec
 - [Chapter 6 — Modeling Living Systems](chapter_06_modeling.md)
 - [Chapter 8 — Protein Structure & Design](chapter_08_protein.md)
 - [Chapter 9 — Single-Cell Intelligence](chapter_09_single_cell.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

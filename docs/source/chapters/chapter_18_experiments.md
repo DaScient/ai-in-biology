@@ -321,3 +321,7 @@ print(f"Required n per group: {n:.0f}")
 - [Chapter 6 — Modeling Living Systems](chapter_06_modeling.md)
 - [Chapter 17 — Biotechnology & Bioengineering](chapter_17_biotech.md)
 - [Chapter 19 — Ethics of AI in Biology](chapter_19_ethics.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

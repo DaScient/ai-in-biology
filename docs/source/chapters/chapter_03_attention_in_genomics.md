@@ -247,3 +247,7 @@ def test_positional_robustness(model, seq, shift=10):
 - [Chapter 2 — DNA Language Models](chapter_02_dna_language_models.md)
 - [Chapter 7 — Genomics & Gene Regulation](chapter_07_genomics.md)
 - [Genomics API](../api/genomics.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

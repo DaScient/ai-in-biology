@@ -213,3 +213,7 @@ In addition to the works cited above:
 - [Chapter 3 — Attention in Genomics](chapter_03_attention_in_genomics.md)
 - [Chapter 5 — Representation Learning](chapter_05_embeddings.md)
 - [Genomics API](../api/genomics.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

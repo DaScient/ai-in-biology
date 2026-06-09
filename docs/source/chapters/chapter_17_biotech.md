@@ -384,3 +384,7 @@ For production, use a **local** BLAST database of regulated sequences (e.g., fro
 - [Chapter 8 — Protein Structure & Design](chapter_08_protein.md)
 - [Chapter 13 — Evolutionary Dynamics](chapter_13_evolution.md)
 - [Drug discovery API](../api/drug_discovery.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

@@ -315,3 +315,7 @@ def graph_alignment_pipeline(fastq, graph_vg, output_vcf):
 - [Chapter 3 — Attention in Genomics](chapter_03_attention_in_genomics.md)
 - [Genomics API](../api/genomics.md)
 - [Genomics tutorial](../tutorials/genomics_analysis.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

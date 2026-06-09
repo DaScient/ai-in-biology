@@ -263,3 +263,7 @@ The filter above can be operationalized as a **scoring rubric** for evaluating a
 - [Chapter 19 — Ethics of AI in Biology](chapter_19_ethics.md)
 - [Chapter 20 — Policy & Regulation](chapter_20_policy.md)
 - [Chapter 22 — Co-Evolution of AI & Life](chapter_22_coevolution.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

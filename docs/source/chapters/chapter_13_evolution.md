@@ -300,3 +300,7 @@ p = empirical_p_value(observed_iHS, neutral_iHS_sims)
 - [Chapter 7 — Genomics & Gene Regulation](chapter_07_genomics.md)
 - [Chapter 14 — Ecology & Conservation](chapter_14_ecology.md)
 - [Chapter 17 — Biotechnology & Bioengineering](chapter_17_biotech.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>
