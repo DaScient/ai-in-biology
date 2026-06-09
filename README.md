@@ -159,3 +159,7 @@ This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAl
 ---
 
 *"The future of life on this planet will be shaped by how well you wield this understanding."* — Dr. Aris Thorne
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

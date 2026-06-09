@@ -321,3 +321,7 @@ A Predetermined Change Control Plan (PCCP) lets a team pre-authorize specific mo
 - [Chapter 8 — Protein Structure & Design](chapter_08_protein.md)
 - [Clinical API](../api/clinical.md)
 - [Chapter 19 — Ethics of AI in Biology](chapter_19_ethics.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

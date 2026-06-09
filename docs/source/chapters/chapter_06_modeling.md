@@ -344,3 +344,7 @@ def profile_likelihood(model, data, param_names, param_index,
 - [Chapter 9 — Single-Cell Intelligence](chapter_09_single_cell.md)
 - [Chapter 10 — Development & Morphogenesis](chapter_10_development.md)
 - [Chapter 14 — Ecology & Conservation](chapter_14_ecology.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

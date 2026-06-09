@@ -303,3 +303,7 @@ def ot_uncertainty(x, y, n_bootstrap=100, reg=0.05):
 - [Chapter 6 — Modeling Living Systems](chapter_06_modeling.md)
 - [Chapter 9 — Single-Cell Intelligence](chapter_09_single_cell.md)
 - [Chapter 11 — Neuroscience](chapter_11_neuroscience.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

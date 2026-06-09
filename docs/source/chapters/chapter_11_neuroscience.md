@@ -342,3 +342,7 @@ def cross_subject_decoding(train_spikes, train_behavior, test_spikes, test_behav
 - [Chapter 6 — Modeling Living Systems](chapter_06_modeling.md)
 - [Chapter 12 — Behavior & Social Systems](chapter_12_ethology.md)
 - [Chapter 18 — Experimental Design](chapter_18_experiments.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

@@ -257,3 +257,7 @@ The current generation of students may not realize how recent and abrupt the shi
 - [Chapter 2 — DNA Language Models](chapter_02_dna_language_models.md)
 - [Chapter 4 — Biological Data Across Scales](chapter_04_data_scales.md)
 - [Quick Start tutorial](../tutorials/quickstart.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

@@ -380,3 +380,7 @@ def counterfactual_priority(model, base_state, perturbations,
 - [Chapter 13 — Evolutionary Dynamics](chapter_13_evolution.md)
 - [Chapter 17 — Biotechnology & Bioengineering](chapter_17_biotech.md)
 - [Chapter 23 — Limits & Open Questions](chapter_23_limits.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

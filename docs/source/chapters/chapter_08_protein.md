@@ -289,3 +289,7 @@ def check_plm_leakage(test_seq, plm_training_uris):
 - [Protein API](../api/protein.md)
 - [Protein folding tutorial](../tutorials/protein_folding.md)
 - [Chapter 17 — Biotechnology & Bioengineering](chapter_17_biotech.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

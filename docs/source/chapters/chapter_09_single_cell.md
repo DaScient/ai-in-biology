@@ -343,3 +343,7 @@ adata.obs['predicted_doublet'] = predicted_doublets
 - [Chapter 5 — Representation Learning](chapter_05_embeddings.md)
 - [Single-Cell API](../api/single_cell.md)
 - [Chapter 10 — Development & Morphogenesis](chapter_10_development.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>

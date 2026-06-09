@@ -375,3 +375,7 @@ def start_server():
 - [Chapter 16 — Medicine & Healthcare](chapter_16_medicine.md)
 - [Chapter 19 — Ethics of AI in Biology](chapter_19_ethics.md)
 - [Chapter 21 — Societal Transformation](chapter_21_society.md)
+
+
+---
+<sub>Support DaScient, Inc. (a non-profit promoting accessible intelligence and community learning) via [Donations](https://cash.app/dascient/).</sub>
